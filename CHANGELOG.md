@@ -7,6 +7,18 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [0.10.0] - 2025-01-15
+
+### Added
+- GitHub Actions workflow for Claude Code integration
+- Claude can now respond to @claude mentions in issues and PRs
+- Configured permissions for Claude to create PRs and push changes
+- Added allowed tools configuration for pnpm, git, gh CLI operations
+- User restriction to repository owner for security
+- Development workflow option in init-bootstrap
+  - Personal vault users: Removes .github folder
+  - Contributors: Keeps GitHub workflows for development
+
 ## [0.9.2] - 2025-01-14
 
 ### Fixed
@@ -274,7 +286,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - API keys stored in environment variables
 - .mcp.json gitignored for security
 
-[Unreleased]: https://github.com/heyitsnoah/claudesidian/compare/v0.9.2...HEAD
+[Unreleased]: https://github.com/heyitsnoah/claudesidian/compare/v0.10.0...HEAD
+[0.10.0]: https://github.com/heyitsnoah/claudesidian/compare/v0.9.2...v0.10.0
 [0.9.2]: https://github.com/heyitsnoah/claudesidian/compare/v0.9.1...v0.9.2
 [0.9.1]: https://github.com/heyitsnoah/claudesidian/compare/v0.9.0...v0.9.1
 [0.9.0]: https://github.com/heyitsnoah/claudesidian/compare/v0.8.8...v0.9.0
