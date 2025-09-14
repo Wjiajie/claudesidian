@@ -32,7 +32,9 @@ Then generate a customized CLAUDE.md file tailored to their needs.
    - Verify core dependencies are installed
    - Check git status:
      - If no .git folder: Initialize git repository
-     - If has remote origin: Remove it to disconnect from claudesidian
+     - If has remote origin: Ask about development work
+       - Personal vault: Remove origin and .github folder
+       - Contributing: Keep origin and workflows intact
      - If clean local repo: Ready to go
    - Don't create folders yet - wait until after asking about organization method
 
@@ -330,9 +332,24 @@ Now setting up your environment...
 [Installs dependencies with pnpm/npm]
 *Why: These tools enable Claude Code to work with your vault effectively*
 
-🔓 **Disconnecting from Original Repository**
-[Removes git remote to disconnect from original]
-*Why: This ensures you won't accidentally push your personal notes to the public repo*
+🔓 **Repository Setup**
+
+**Will you be contributing to claudesidian development?**
+- **No** (Personal vault only) → I'll remove GitHub workflows and disconnect from the repo
+- **Yes** (I want to contribute) → I'll keep the development setup intact
+
+[Implementation:]
+```bash
+# If user says "No" (personal vault):
+rm -rf .github  # Remove GitHub workflows
+git remote remove origin  # Disconnect from claudesidian repo
+
+# If user says "Yes" (contributing):
+# Keep .github folder and origin remote
+echo "Development setup preserved for contributing"
+```
+
+*Why: Personal vaults don't need GitHub Actions, but contributors benefit from the automation*
 
 📂 **Creating Folder Structure**
 [Creates folders based on your chosen organization method]
