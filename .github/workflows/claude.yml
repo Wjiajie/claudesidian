@@ -43,39 +43,12 @@ jobs:
           additional_permissions: |
             actions: read
 
-          # Allow Claude to run specific tools and commands
-          allowed_tools: |
-            Bash(pnpm install)
-            Bash(pnpm setup)
-            Bash(pnpm attachments:*)
-            Bash(pnpm vault:stats)
-            Bash(pnpm check-updates)
-            Bash(npm run *)
-            Bash(git status)
-            Bash(git diff *)
-            Bash(git log *)
-            Bash(git add *)
-            Bash(git commit *)
-            Bash(git push)
-            Bash(gh pr *)
-            Bash(gh issue *)
-            Bash(ls *)
-            Bash(cat *)
-            Bash(grep *)
-            Bash(find *)
-            View
-            GlobTool
-            GrepTool
-            BatchTool
-            Read
-            Write
-            Edit
-
           # Optional: Give a custom prompt to Claude. If this is not specified, Claude will perform the instructions specified in the comment that tagged it.
           # prompt: 'Update the pull request description to include a summary of changes.'
 
-          # Optional: Add claude_args to customize behavior and configuration
+          # Add claude_args to customize behavior and configuration
           # See https://github.com/anthropics/claude-code-action/blob/main/docs/usage.md
           # or https://docs.anthropic.com/en/docs/claude-code/sdk#command-line for available options
-          # claude_args: '--model claude-opus-4-1-20250805'
+          claude_args: |
+            --allowed-tools "Bash(pnpm install),Bash(pnpm setup),Bash(pnpm attachments:*),Bash(pnpm vault:stats),Bash(pnpm check-updates),Bash(npm run *),Bash(git status),Bash(git diff *),Bash(git log *),Bash(git add *),Bash(git commit *),Bash(git push),Bash(gh pr *),Bash(gh issue *),Bash(ls *),Bash(cat *),Bash(grep *),Bash(find *),View,GlobTool,GrepTool,BatchTool,Read,Write,Edit"
 
