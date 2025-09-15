@@ -8,7 +8,7 @@ import { fileURLToPath } from 'node:url'
 import tsEslint, { parser } from 'typescript-eslint'
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url))
-const gitIgnorePath = path.join(__dirname, '.gitignore')
+const gitIgnorePath = path.join(__dirname, '..', '.gitignore')
 const autofix = process.env.CI ? 'error' : 'warn'
 
 /** @type {import('@typescript-eslint/utils/ts-eslint').FlatConfig.Config[]} */
@@ -257,7 +257,7 @@ export default [
     languageOptions: {
       parserOptions: {
         projectService: true,
-        tsconfigRootDir: __dirname,
+        tsconfigRootDir: path.join(__dirname, '..'),
       },
     },
     name: 'claudesidian/typed',
