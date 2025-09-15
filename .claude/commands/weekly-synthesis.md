@@ -35,50 +35,62 @@ Create a weekly synthesis note:
 # Weekly Synthesis - Week of [Date]
 
 ## Week at a Glance
+
 - Notes created: [X]
 - Projects active: [List]
 - Major accomplishments: [List]
 
 ## Key Themes
+
 ### Theme 1: [Name]
+
 - Where it appeared: [contexts]
 - Why it matters: [significance]
 - Next actions: [what to do]
 
 ### Theme 2: [Name]
+
 - Where it appeared: [contexts]
 - Why it matters: [significance]
 - Next actions: [what to do]
 
 ## Major Insights
+
 1. [Insight with context]
 2. [Insight with context]
 
 ## Progress by Project
+
 ### [Project Name]
-- What advanced: 
+
+- What advanced:
 - What's blocked:
 - Next week's focus:
 
 ## Questions Emerged
+
 - [Question 1 - and why it matters]
 - [Question 2 - and why it matters]
 
 ## Energy Audit
-- What gave energy: 
+
+- What gave energy:
 - What drained energy:
 - What to adjust:
 
 ## Connections Made
+
 - [Note A] ←→ [Note B]: [Why significant]
 - [Concept X] ←→ [Concept Y]: [New understanding]
 
 ## Next Week's Intentions
+
 1. [Primary focus]
 2. [Secondary focus]
 3. [Thing to explore]
 
 ## To Process
+
 - Inbox items: [count]
 - Orphaned notes: [list]
 - Missing connections: [identified]

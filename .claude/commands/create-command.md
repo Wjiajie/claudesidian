@@ -60,9 +60,7 @@ Brief description of what this command does.
 
 ## Example Usage
 
-\`\`\`
-claude run [command-name] [arguments]
-\`\`\`
+\`\`\` claude run [command-name] [arguments] \`\`\`
 ```
 
 ## Best Practices

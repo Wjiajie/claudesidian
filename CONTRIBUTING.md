@@ -1,6 +1,7 @@
 # Contributing to Claudesidian
 
-Thank you for your interest in contributing to claudesidian! This document provides guidelines for contributing to the project.
+Thank you for your interest in contributing to claudesidian! This document
+provides guidelines for contributing to the project.
 
 ## Development Setup
 
@@ -11,7 +12,8 @@ Thank you for your interest in contributing to claudesidian! This document provi
 
 ## Commit Message Convention
 
-We follow [Conventional Commits](https://www.conventionalcommits.org/) for clear commit history:
+We follow [Conventional Commits](https://www.conventionalcommits.org/) for clear
+commit history:
 
 - `feat:` New feature
 - `fix:` Bug fix
@@ -22,6 +24,7 @@ We follow [Conventional Commits](https://www.conventionalcommits.org/) for clear
 - `chore:` Maintenance tasks
 
 Examples:
+
 ```
 feat: add new research-assistant command
 fix: correct attachment link updates in scripts
@@ -31,6 +34,7 @@ docs: update README with MCP setup instructions
 ## Versioning
 
 We use [Semantic Versioning](https://semver.org/):
+
 - MAJOR (1.0.0): Breaking changes
 - MINOR (0.1.0): New features (backward compatible)
 - PATCH (0.0.1): Bug fixes (backward compatible)
@@ -44,19 +48,23 @@ We use [Semantic Versioning](https://semver.org/):
 
 ## Changelog Updates
 
-When contributing, add your changes to CHANGELOG.md under the "Unreleased" section:
+When contributing, add your changes to CHANGELOG.md under the "Unreleased"
+section:
 
 ```markdown
 ## [Unreleased]
 
 ### Added
+
 - Your new feature here
 
 ### Fixed
+
 - Your bug fix here
 ```
 
 Use these categories:
+
 - **Added** - New features
 - **Changed** - Changes to existing functionality
 - **Deprecated** - Features to be removed

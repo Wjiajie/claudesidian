@@ -22,11 +22,11 @@ jobs:
       )
     runs-on: ubuntu-latest
     permissions:
-      contents: write      # Allow Claude to push changes
-      pull-requests: write  # Allow Claude to create/modify PRs
-      issues: write        # Allow Claude to create/update issues
+      contents: write # Allow Claude to push changes
+      pull-requests: write # Allow Claude to create/modify PRs
+      issues: write # Allow Claude to create/update issues
       id-token: write
-      actions: read        # Required for Claude to read CI results on PRs
+      actions: read # Required for Claude to read CI results on PRs
     steps:
       - name: Checkout repository
         uses: actions/checkout@v4
@@ -38,7 +38,7 @@ jobs:
         uses: anthropics/claude-code-action@v1
         with:
           claude_code_oauth_token: ${{ secrets.CLAUDE_CODE_OAUTH_TOKEN }}
-          
+
           # This is an optional setting that allows Claude to read CI results on PRs
           additional_permissions: |
             actions: read
@@ -51,4 +51,3 @@ jobs:
           # or https://docs.anthropic.com/en/docs/claude-code/sdk#command-line for available options
           claude_args: |
             --allowed-tools "Bash(pnpm install),Bash(pnpm setup),Bash(pnpm attachments:*),Bash(pnpm vault:stats),Bash(pnpm check-updates),Bash(npm run *),Bash(git status),Bash(git diff *),Bash(git log *),Bash(git add *),Bash(git commit *),Bash(git push),Bash(gh pr *),Bash(gh issue *),Bash(ls *),Bash(cat *),Bash(grep *),Bash(find *),View,GlobTool,GrepTool,BatchTool,Read,Write,Edit"
-

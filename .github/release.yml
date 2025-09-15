@@ -26,4 +26,4 @@ changelog:
         - maintenance
     - title: Other Changes
       labels:
-        - "*"
+        - '*'

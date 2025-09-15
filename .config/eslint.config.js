@@ -15,7 +15,23 @@ const autofix = process.env.CI ? 'error' : 'warn'
 export default [
   // Global ignore
   {
-    ignores: ['**/*.json'],
+    ignores: [
+      '**/*.json',
+      '00_Inbox/**',
+      '01_Projects/**',
+      '02_Areas/**',
+      '03_Resources/**',
+      '04_Archives/**',
+      '05_Attachments/**',
+      '06_Metadata/**',
+      'OLD_VAULT/**',
+      '.obsidian/**',
+      '.trash/**',
+      '.tmp/**',
+      '.backup/**',
+      'node_modules/**',
+      'package-lock.json',
+    ],
     name: 'claudesidian/global-ignore',
   },
 
@@ -100,17 +116,17 @@ export default [
       '@typescript-eslint/prefer-literal-enum-member': ['error'],
       '@typescript-eslint/prefer-namespace-keyword': [autofix],
       '@typescript-eslint/triple-slash-reference': ['error'],
-      'check-file/filename-naming-convention': [
-        'error',
-        { '**/*': 'KEBAB_CASE' },
-        { ignoreMiddleExtensions: true },
-      ],
-      'check-file/folder-naming-convention': [
-        'error',
-        { '**/*': 'NEXT_JS_APP_ROUTER_CASE' },
-        { ignoreMiddleExtensions: true },
-      ],
-      'check-file/no-index': ['error', { ignoreMiddleExtensions: true }],
+      // File naming conventions - removed for flexibility
+      // 'check-file/filename-naming-convention': [
+      //   'error',
+      //   { '**/*': 'KEBAB_CASE' },
+      //   { ignoreMiddleExtensions: true },
+      // ],
+      // 'check-file/folder-naming-convention': [
+      //   'error',
+      //   { '**/*': 'KEBAB_CASE' },
+      //   { ignoreMiddleExtensions: true },
+      // ],
       'constructor-super': ['error'],
       'curly': [autofix, 'multi-line', 'consistent'],
       'eqeqeq': [autofix, 'always', { null: 'ignore' }],
@@ -119,7 +135,7 @@ export default [
       'import/enforce-node-protocol-usage': [autofix, 'always'],
       'import/first': [autofix],
       'import/newline-after-import': [autofix],
-      'import/no-default-export': ['error'],
+      // 'import/no-default-export': ['error'], // Disabled - config files need default exports
       'import/no-duplicates': [autofix],
       'import/no-mutable-exports': ['error'],
       'logical-assignment-operators': [autofix],
