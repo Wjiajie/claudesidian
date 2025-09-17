@@ -76,10 +76,13 @@ capabilities.
 
 **⚠️ CRITICAL IMPLEMENTATION REQUIREMENT:**
 
-- **NEVER blindly overwrite files with `cat > file` or `cp`**
+- **NEVER blindly overwrite files without showing diffs first**
 - **ALWAYS show diffs to the user first**
 - **ALWAYS ask for confirmation before replacing files**
 - **Skipping these steps can lose user customizations!**
+- **NEVER use `cp` or `cp -f` (both can cause prompts on protected files)**
+- **ALWAYS USE `cat source > dest` for guaranteed non-interactive replacement**
+- **WAIT for actual user input - don't automatically choose option 1**
 
 For EACH file in the checklist:
 
@@ -103,10 +106,26 @@ For EACH file in the checklist:
       3. View diff and decide
       4. Try to merge both (AI-assisted)
 
-      Choice (1/2/3/4): _
+      Choice (1/2/3/4): [WAIT FOR USER TO TYPE NUMBER AND PRESS ENTER]
       ```
 
-4.  Apply the chosen strategy
+      **IMPORTANT**: Actually WAIT for the user to type their choice!
+      Do NOT automatically select any option. The user must manually
+      type 1, 2, 3, or 4 and press Enter.
+
+4.  Apply the chosen strategy:
+    - **For option 1 (Apply update/Take upstream)**:
+      ```bash
+      # IMPORTANT: Use cat with redirection to avoid ALL prompts
+      # Do NOT use cp or cp -f as they may still prompt on some systems
+      cat .tmp/claudesidian-upgrade/path/to/file > path/to/file && echo "✅ Updated"
+      # Alternative if needed: rm -f path/to/file && cat .tmp/claudesidian-upgrade/path/to/file > path/to/file
+      ```
+    - **For option 2 (Keep your version)**:
+      ```bash
+      echo "✅ Kept your version"
+      ```
+    - **For option 4 (AI merge)**: Read both files and create merged version
 5.  **CRITICAL: Update the checklist file immediately**:
     ```markdown
     [ ] .claude/commands/init-bootstrap.md → becomes → [x]
