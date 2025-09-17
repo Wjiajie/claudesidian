@@ -1,6 +1,7 @@
 # Inbox Processor
 
-Help organize and process items in the 00_Inbox folder according to the PARA method.
+Help organize and process items in the 00_Inbox folder according to the PARA
+method.
 
 ## Task
 
@@ -23,6 +24,7 @@ Review all notes in `00_Inbox/` and help categorize them:
    - **→ Delete**: No value, redundant, or temporary
 
 4. **Suggest Actions**
+
    ```
    File: [filename]
    Type: [detected type]
@@ -39,6 +41,7 @@ Review all notes in `00_Inbox/` and help categorize them:
 ## Output Format
 
 Provide a clear action plan:
+
 1. Items to move (with destinations)
 2. Items to combine or link
 3. Items to delete

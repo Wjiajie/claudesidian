@@ -4,7 +4,9 @@ Turn your Obsidian vault into an AI-powered second brain using Claude Code.
 
 ## What is this?
 
-This is a pre-configured Obsidian vault structure designed to work seamlessly with Claude Code, enabling you to:
+This is a pre-configured Obsidian vault structure designed to work seamlessly
+with Claude Code, enabling you to:
+
 - Use AI as a thinking partner, not just a writing assistant
 - Organize knowledge using the PARA method
 - Maintain version control with Git
@@ -15,6 +17,7 @@ This is a pre-configured Obsidian vault structure designed to work seamlessly wi
 ### 1. Get the Starter Kit
 
 **Option A: Clone with Git**
+
 ```bash
 # Clone with your preferred folder name (replace 'my-vault' with any name you like)
 git clone https://github.com/heyitsnoah/claudesidian.git my-vault
@@ -27,11 +30,13 @@ cd my-vault
 ```
 
 **Option B: Download ZIP (no Git required)**
+
 1. Click "Code" → "Download ZIP" on GitHub
 2. Extract to your desired location
 3. Open the folder in Claude Code
 
 ### 2. Run the Setup Wizard
+
 ```bash
 # Start Claude Code in the directory
 claude
@@ -41,6 +46,7 @@ claude
 ```
 
 This will:
+
 - Install dependencies automatically
 - Disconnect from the original claudesidian repository
 - **Intelligently analyze** your existing vault structure and patterns
@@ -54,12 +60,15 @@ This will:
 - Initialize Git for version control
 
 ### 3. Open in Obsidian (Optional but Recommended)
+
 - Download [Obsidian](https://obsidian.md)
 - Open vault from the claudesidian folder
 - This gives you a visual interface alongside Claude Code
 
 ### 4. Your First Session
+
 Tell Claude Code:
+
 ```
 I'm starting a new project about [topic].
 I'm in thinking mode, not writing mode.
@@ -68,6 +77,7 @@ then help me explore this topic by asking questions.
 ```
 
 Or use one of the pre-configured commands (in Claude Code):
+
 ```
 /thinking-partner   # For collaborative exploration
 /daily-review       # For end-of-day reflection
@@ -95,12 +105,14 @@ claudesidian/
 ### Thinking Mode vs Writing Mode
 
 **Thinking Mode** (Research & Exploration):
+
 - Claude asks questions to understand your goals
 - Searches existing notes for relevant content
 - Helps make connections between ideas
 - Maintains a log of insights and progress
 
 **Writing Mode** (Content Creation):
+
 - Generates drafts based on your research
 - Helps structure and edit content
 - Creates final deliverables
@@ -108,18 +120,22 @@ claudesidian/
 ### The PARA Method
 
 **Projects**: Have a deadline and specific outcome
+
 - Example: "Q4 2025 Marketing Strategy"
 - Create a folder in `01_Projects/`
 
 **Areas**: Ongoing without an end date
+
 - Example: "Health", "Finances", "Team Management"
 - Lives in `02_Areas/`
 
 **Resources**: Topics of ongoing interest
+
 - Example: "AI Research", "Writing Tips"
 - Store in `03_Resources/`
 
 **Archive**: Inactive items
+
 - Completed projects with their outputs
 - Old notes no longer relevant
 
@@ -141,9 +157,11 @@ Run with: `/[command-name]` in Claude Code
 
 ### Staying Updated with `/upgrade`
 
-Claudesidian automatically checks for updates when you start Claude Code and will remind you to run `/upgrade` when new features are available.
+Claudesidian automatically checks for updates when you start Claude Code and
+will remind you to run `/upgrade` when new features are available.
 
-The upgrade command intelligently merges new features while preserving your customizations:
+The upgrade command intelligently merges new features while preserving your
+customizations:
 
 ```bash
 # Preview what would be updated (recommended first)
@@ -157,6 +175,7 @@ The upgrade command intelligently merges new features while preserving your cust
 ```
 
 **What the upgrade does:**
+
 - Creates a timestamped backup before making any changes
 - Shows you diffs for each file before updating
 - Preserves your personal notes and customizations
@@ -165,6 +184,7 @@ The upgrade command intelligently merges new features while preserving your cust
 - Provides rollback capability if needed
 
 **Safety features:**
+
 - All your personal content is protected
 - Complete backup created in `.backup/upgrade-[timestamp]/`
 - File-by-file review and confirmation
@@ -173,16 +193,21 @@ The upgrade command intelligently merges new features while preserving your cust
 
 ## Vision & Document Analysis (Optional)
 
-With [Google Gemini](https://ai.google.dev/) MCP configured, Claude Code can process your attachments directly without having to describe them. This means:
+With [Google Gemini](https://ai.google.dev/) MCP configured, Claude Code can
+process your attachments directly without having to describe them. This means:
+
 - **Direct image analysis**: Claude sees the actual image, not your description
 - **PDF text extraction**: Full document text without copy-pasting
 - **Bulk processing**: Analyze multiple screenshots or documents at once
 - **Smart organization**: Auto-generate filenames based on image content
 - **Comparison tasks**: Compare before/after screenshots, designs, etc.
 
-**Why this matters**: Instead of describing "a screenshot showing an error message", Claude Code directly sees and reads the error. Perfect for debugging UI issues, analyzing charts, or processing scanned documents.
+**Why this matters**: Instead of describing "a screenshot showing an error
+message", Claude Code directly sees and reads the error. Perfect for debugging
+UI issues, analyzing charts, or processing scanned documents.
 
 **Getting a Gemini API key:**
+
 1. Visit [Google AI Studio](https://aistudio.google.com)
 2. Sign in with your Google account
 3. Click "Get API key" in the left sidebar
@@ -193,16 +218,23 @@ See `.claude/mcp-servers/README.md` for full setup instructions
 
 ## Web Research (Optional)
 
-With [Firecrawl](https://www.firecrawl.dev/) configured, our helper scripts fetch and save full web content directly to your vault. This means:
-- **Full text capture**: Scripts pipe complete article text to files, not summaries
+With [Firecrawl](https://www.firecrawl.dev/) configured, our helper scripts
+fetch and save full web content directly to your vault. This means:
+
+- **Full text capture**: Scripts pipe complete article text to files, not
+  summaries
 - **Context preservation**: Claude doesn't need to hold web content in memory
 - **Batch processing**: Save multiple articles at once with `firecrawl-batch.sh`
 - **Clean markdown**: Web pages converted to readable, searchable markdown
 - **Permanent archive**: Your research stays in your vault forever
 
-**Why this matters**: Instead of Claude reading a webpage and summarizing it (losing detail), the scripts save the FULL text. Claude can then search and analyze thousands of saved articles without hitting context limits. Perfect for research projects, documentation archives, or building a knowledge base.
+**Why this matters**: Instead of Claude reading a webpage and summarizing it
+(losing detail), the scripts save the FULL text. Claude can then search and
+analyze thousands of saved articles without hitting context limits. Perfect for
+research projects, documentation archives, or building a knowledge base.
 
 **Example workflow:**
+
 ```bash
 # Save a single article
 npm run firecrawl:scrape -- "https://example.com/article" "03_Resources/Articles"
@@ -212,6 +244,7 @@ npm run firecrawl:batch -- urls.txt "03_Resources/Research"
 ```
 
 **Getting a Firecrawl API key:**
+
 1. Visit [Firecrawl](https://www.firecrawl.dev) and sign up
 2. Get 300 free credits to start (open-source, can self-host)
 3. Go to your dashboard to find your API key
@@ -233,6 +266,7 @@ Run these with `pnpm`:
 ### Git Integration
 
 Initialize Git for version control:
+
 ```bash
 git init
 git add .
@@ -242,6 +276,7 @@ git push -u origin main
 ```
 
 Best practices:
+
 - Commit after each work session
 - Use descriptive commit messages
 - Pull before starting work
@@ -259,8 +294,10 @@ Best practices:
 Create specialized commands by saving instructions in `.claude/commands/`:
 
 **Research Assistant** (`06_Metadata/Agents/research-assistant.md`):
+
 ```markdown
 You are a research assistant.
+
 - Search the vault for relevant information
 - Synthesize findings from multiple sources
 - Identify gaps in knowledge
@@ -280,16 +317,19 @@ You are a research assistant.
 ## Troubleshooting
 
 ### Claude Code can't find my notes
+
 - Make sure you're running Claude Code from the vault root directory
 - Check file permissions
 - Verify markdown files have `.md` extension
 
 ### Git conflicts
+
 - Always pull before starting work
 - Commit frequently with clear messages
 - Use branches for experimental changes
 
 ### Attachment management
+
 - Run `npm run attachments:create-organized` to set up folders
 - Use helper scripts to find orphaned files
 - Keep attachments under 10MB for Git
@@ -306,7 +346,8 @@ This setup is based on key principles:
 
 ## Contributing
 
-We welcome contributions from the community! This is a living template that gets better with everyone's input.
+We welcome contributions from the community! This is a living template that gets
+better with everyone's input.
 
 ### How to Contribute
 
@@ -327,7 +368,8 @@ We welcome contributions from the community! This is a living template that gets
 - **Workflow templates**: Share your productive workflows
 - **Helper scripts**: Automation tools that make vault management easier
 - **Integration guides**: Connect Claudesidian with other tools
-- **Core updates**: Improvements to the upgrade system, setup wizard, or other core features
+- **Core updates**: Improvements to the upgrade system, setup wizard, or other
+  core features
 
 ### Guidelines
 
@@ -336,16 +378,20 @@ We welcome contributions from the community! This is a living template that gets
 - Test thoroughly before submitting
 - Follow existing code style and structure
 - Update the CHANGELOG.md with your changes
-- **AI-generated content is welcome, but you MUST carefully read and review everything before submitting** - never submit code you don't understand
+- **AI-generated content is welcome, but you MUST carefully read and review
+  everything before submitting** - never submit code you don't understand
 
 ### Getting Updates
 
 When new features are contributed and merged, users can easily get them with:
+
 ```bash
 /upgrade
 ```
 
-The upgrade command intelligently merges new features while preserving your personal customizations, making it easy to benefit from community contributions without losing your work.
+The upgrade command intelligently merges new features while preserving your
+personal customizations, making it easy to benefit from community contributions
+without losing your work.
 
 ### Questions or Ideas?
 
@@ -353,7 +399,8 @@ The upgrade command intelligently merges new features while preserving your pers
 - Join discussions in existing issues
 - Share your use cases - they help us understand needs better
 
-Remember: best practices emerge from use, not theory. Your real-world experience makes this better for everyone!
+Remember: best practices emerge from use, not theory. Your real-world experience
+makes this better for everyone!
 
 ## Resources
 
@@ -364,8 +411,12 @@ Remember: best practices emerge from use, not theory. Your real-world experience
 ## Inspiration
 
 This starter kit was inspired by the workflows discussed in:
-- [How to Use Claude Code as a Second Brain](https://every.to/podcast/how-to-use-claude-code-as-a-thinking-partner) - Noah Brier's interview with Dan Shipper
-- Built by the team at [Alephic](https://alephic.com) - an AI-first strategy and software partner that helps organizations solve complex challenges through custom AI systems
+
+- [How to Use Claude Code as a Second Brain](https://every.to/podcast/how-to-use-claude-code-as-a-thinking-partner) -
+  Noah Brier's interview with Dan Shipper
+- Built by the team at [Alephic](https://alephic.com) - an AI-first strategy and
+  software partner that helps organizations solve complex challenges through
+  custom AI systems
 
 ## License
 
@@ -373,4 +424,4 @@ MIT - Use this however you want. Make it your own.
 
 ---
 
-*Remember: The bicycle feels wobbly at first, then you forget it was ever hard.*
+_Remember: The bicycle feels wobbly at first, then you forget it was ever hard._

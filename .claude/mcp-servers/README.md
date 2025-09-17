@@ -4,7 +4,8 @@ Model Context Protocol servers extend Claude Code's capabilities.
 
 ## Gemini Vision MCP
 
-Adds powerful image and document analysis capabilities using Google's Gemini model.
+Adds powerful image and document analysis capabilities using Google's Gemini
+model.
 
 ### Features
 
@@ -21,15 +22,17 @@ Adds powerful image and document analysis capabilities using Google's Gemini mod
    - Create a free API key
 
 2. **Add to Environment**
+
    ```bash
    # Add to ~/.zshrc or ~/.bashrc
    export GEMINI_API_KEY='your-key-here'
-   
+
    # Reload shell
    source ~/.zshrc
    ```
 
 3. **Install Dependencies**
+
    ```bash
    pnpm install
    ```
@@ -53,24 +56,28 @@ Once configured, these commands become available in Claude Code:
 ### Usage Examples
 
 **Analyze Screenshot**
+
 ```
 Analyze the image at 05_Attachments/screenshot.png
 and tell me what it contains.
 ```
 
 **Process Multiple Images**
+
 ```
 Compare all images in 05_Attachments/Organized/
 and identify common themes.
 ```
 
 **Extract Text**
+
 ```
-Extract all text from the PDF at 
+Extract all text from the PDF at
 05_Attachments/document.pdf
 ```
 
 **Rename Images**
+
 ```
 Suggest better names for all images
 in 05_Attachments/ based on their content.
@@ -79,14 +86,17 @@ in 05_Attachments/ based on their content.
 ### Troubleshooting
 
 **"GEMINI_API_KEY not found"**
+
 - Make sure you've added the key to your shell profile
 - Restart your terminal and Claude Code
 
 **"File not found"**
+
 - Use absolute paths or paths relative to vault root
 - Check file permissions
 
 **Rate Limits**
+
 - Free tier: 15 requests per minute
 - Consider upgrading for heavy usage
 

@@ -1,13 +1,19 @@
 ---
 name: upgrade
-description: Intelligently upgrade claudesidian with new features while preserving user customizations using AI-powered semantic analysis
+description:
+  Intelligently upgrade claudesidian with new features while preserving user
+  customizations using AI-powered semantic analysis
 allowed-tools: [Read, Write, Edit, MultiEdit, Bash, WebFetch, Grep, Glob]
-argument-hint: "(optional) 'check' to preview changes, 'force' to skip confirmations"
+argument-hint:
+  "(optional) 'check' to preview changes, 'force' to skip confirmations"
 ---
 
 # Smart Upgrade Command
 
-Intelligently upgrades your claudesidian installation by fetching the latest release from GitHub and using AI-powered semantic analysis to merge new features with your existing customizations. Preserves user intent while adding new capabilities.
+Intelligently upgrades your claudesidian installation by fetching the latest
+release from GitHub and using AI-powered semantic analysis to merge new features
+with your existing customizations. Preserves user intent while adding new
+capabilities.
 
 ## Task
 
@@ -21,155 +27,173 @@ Intelligently upgrades your claudesidian installation by fetching the latest rel
 ## Process
 
 ### 1. **Version Check & Setup**
-   - Get current version from package.json
-   - Create timestamped backup in `.backup/upgrade-YYYY-MM-DD-HHMMSS/`
-   - Clone latest claudesidian to temp directory (doesn't affect user's repo):
-     ```bash
-     # Get fresh copy in .tmp dir (hidden from Obsidian) - user's repo stays disconnected
-     git clone --depth=1 --branch=main https://github.com/heyitsnoah/claudesidian.git .tmp/claudesidian-upgrade
-     ```
-   - Now we have latest version to compare against
+
+- Get current version from package.json
+- Create timestamped backup in `.backup/upgrade-YYYY-MM-DD-HHMMSS/`
+- Clone latest claudesidian to temp directory (doesn't affect user's repo):
+  ```bash
+  # Get fresh copy in .tmp dir (hidden from Obsidian) - user's repo stays disconnected
+  git clone --depth=1 --branch=main https://github.com/heyitsnoah/claudesidian.git .tmp/claudesidian-upgrade
+  ```
+- Now we have latest version to compare against
 
 ### 2. **Create Upgrade Checklist**
-   - Compare system files between current directory and .tmp/claudesidian-upgrade/:
-     ```bash
-     # Find all system files that differ
-     diff -qr . .tmp/claudesidian-upgrade/ --include="*.md" --include="*.sh" --include="*.json" |
-     grep -E '(\.claude/|\.scripts/|package\.json|CHANGELOG\.md|README\.md)' |
-     grep -v '(00_|01_|02_|03_|04_|05_|06_|\.obsidian|CLAUDE\.md)'
-     ```
-   - Create checklist of files that need review
-   - Explicitly EXCLUDE:
-     - User content folders (00_Inbox, 01_Projects, etc.)
-     - User's CLAUDE.md (their personalized version)
-     - vault-config.json (user's vault configuration)
-     - .obsidian/ (user's Obsidian settings)
-     - Any .md files in the root except README and CHANGELOG
-   - Create `.upgrade-checklist.md` with only system files that differ
-   - Mark each file with status: `[ ] pending`, `[x] updated`, `[-] skipped`
-   - Group files by type for easier review:
-     ```markdown
-     ## Commands (12 files)
-     [ ] .claude/commands/init-bootstrap.md
-     [ ] .claude/commands/release.md
-     [ ] .claude/commands/thinking-partner.md
-     ...
 
-     ## Settings (2 files)
-     [ ] .claude/settings.json
-     [ ] .claude/settings.local.json
+- Compare system files between current directory and .tmp/claudesidian-upgrade/:
+  ```bash
+  # Find all system files that differ
+  diff -qr . .tmp/claudesidian-upgrade/ --include="*.md" --include="*.sh" --include="*.json" |
+  grep -E '(\.claude/|\.scripts/|package\.json|CHANGELOG\.md|README\.md)' |
+  grep -v '(00_|01_|02_|03_|04_|05_|06_|\.obsidian|CLAUDE\.md)'
+  ```
+- Create checklist of files that need review
+- Explicitly EXCLUDE:
+  - User content folders (00_Inbox, 01_Projects, etc.)
+  - User's CLAUDE.md (their personalized version)
+  - vault-config.json (user's vault configuration)
+  - .obsidian/ (user's Obsidian settings)
+  - Any .md files in the root except README and CHANGELOG
+- Create `.upgrade-checklist.md` with only system files that differ
+- Mark each file with status: `[ ] pending`, `[x] updated`, `[-] skipped`
+- Group files by type for easier review:
 
-     ## Core Files (3 files)
-     [ ] package.json
-     [ ] CHANGELOG.md
-     [ ] README.md
-     ```
+  ```markdown
+  ## Commands (12 files)
+
+  [ ] .claude/commands/init-bootstrap.md [ ] .claude/commands/release.md [ ]
+  .claude/commands/thinking-partner.md ...
+
+  ## Settings (2 files)
+
+  [ ] .claude/settings.json [ ] .claude/settings.local.json
+
+  ## Core Files (3 files)
+
+  [ ] package.json [ ] CHANGELOG.md [ ] README.md
+  ```
 
 ### 3. **File-by-File Review**
 
-   **⚠️ CRITICAL IMPLEMENTATION REQUIREMENT:**
-   - **NEVER blindly overwrite files with `cat > file` or `cp`**
-   - **ALWAYS show diffs to the user first**
-   - **ALWAYS ask for confirmation before replacing files**
-   - **Skipping these steps can lose user customizations!**
+**⚠️ CRITICAL IMPLEMENTATION REQUIREMENT:**
 
-   For EACH file in the checklist:
-   1. Read current checklist status from `.upgrade-checklist.md`
-   2. **MANDATORY: Show the diff between local and upstream**:
-      ```bash
-      # ALWAYS show this to the user!
-      diff -u current/file .tmp/claudesidian-upgrade/file
+- **NEVER blindly overwrite files with `cat > file` or `cp`**
+- **ALWAYS show diffs to the user first**
+- **ALWAYS ask for confirmation before replacing files**
+- **Skipping these steps can lose user customizations!**
+
+For EACH file in the checklist:
+
+1.  Read current checklist status from `.upgrade-checklist.md`
+2.  **MANDATORY: Show the diff between local and upstream**:
+    ```bash
+    # ALWAYS show this to the user!
+    diff -u current/file .tmp/claudesidian-upgrade/file
+    ```
+3.  Determine update strategy:
+    - **No local changes**: Direct replace from upstream
+    - **Never update**: User's CLAUDE.md, vault-config.json, .mcp.json
+    - **Local changes detected**: Ask user:
+
       ```
-   3. Determine update strategy:
-      - **No local changes**: Direct replace from upstream
-      - **Never update**: User's CLAUDE.md, vault-config.json, .mcp.json
-      - **Local changes detected**: Ask user:
-        ```
-        File: .claude/commands/thinking-partner.md has local modifications
+      File: .claude/commands/thinking-partner.md has local modifications
 
-        Options:
-        1. Keep your version (skip update)
-        2. Take upstream version (lose your changes)
-        3. View diff and decide
-        4. Try to merge both (AI-assisted)
+      Options:
+      1. Keep your version (skip update)
+      2. Take upstream version (lose your changes)
+      3. View diff and decide
+      4. Try to merge both (AI-assisted)
 
-        Choice (1/2/3/4): _
-        ```
-   4. Apply the chosen strategy
-   5. **CRITICAL: Update the checklist file immediately**:
-      ```markdown
-      [ ] .claude/commands/init-bootstrap.md  → becomes →  [x] .claude/commands/init-bootstrap.md
+      Choice (1/2/3/4): _
       ```
-   6. Save `.upgrade-checklist.md` after EVERY file update
-   7. Move to next file
+
+4.  Apply the chosen strategy
+5.  **CRITICAL: Update the checklist file immediately**:
+    ```markdown
+    [ ] .claude/commands/init-bootstrap.md → becomes → [x]
+    .claude/commands/init-bootstrap.md
+    ```
+6.  Save `.upgrade-checklist.md` after EVERY file update
+7.  Move to next file
 
 ### 4. **Update Types**
-   - **Safe to replace**: `.claude/commands/*.md`, `.claude/agents/*.md`, `.scripts/*`
-   - **Needs review**: `package.json` (preserve user's custom scripts)
-   - **Never touch**: User content folders, CLAUDE.md, API configs
+
+- **Safe to replace**: `.claude/commands/*.md`, `.claude/agents/*.md`,
+  `.scripts/*`
+- **Needs review**: `package.json` (preserve user's custom scripts)
+- **Never touch**: User content folders, CLAUDE.md, API configs
 
 ### 5. **Progress Tracking**
-   - Use TodoWrite tool to track progress alongside the checklist
-   - Save progress after each file in `.upgrade-checklist.md`
-   - **MUST mark items in checklist**:
-     - `[x]` = completed
-     - `[-]` = skipped (user customization)
-     - `[ ]` = still pending
-   - If interrupted, can resume from where you left off
-   - Show progress: "Updating file 5 of 23..."
-   - Clear indication of what's been done and what's remaining
+
+- Use TodoWrite tool to track progress alongside the checklist
+- Save progress after each file in `.upgrade-checklist.md`
+- **MUST mark items in checklist**:
+  - `[x]` = completed
+  - `[-]` = skipped (user customization)
+  - `[ ]` = still pending
+- If interrupted, can resume from where you left off
+- Show progress: "Updating file 5 of 23..."
+- Clear indication of what's been done and what's remaining
 
 ### 6. **Verification Check**
-   - Re-check all system files against the checklist
-   - Compare with checklist to identify:
-     - Files marked `[ ]` pending = likely missed (problem)
-     - Files marked `[-]` skipped = intentionally kept different (fine)
-     - Files marked `[x]` updated but still in diff = merge issues or user edits (review)
-   - Show verification results:
-     ```
-     ✅ All required files updated successfully
-     ℹ️ 2 files intentionally kept with user customizations:
-     - .claude/commands/thinking-partner.md (user's concise style)
-     - package.json (user's custom scripts preserved)
-     - or -
-     ⚠️ Warning: 2 files appear to be missed (still marked pending):
-     - .claude/commands/release.md
-     - .scripts/vault-stats.sh
-     ```
-   - Only flag as problem if files are still marked `[ ]` pending in checklist
+
+- Re-check all system files against the checklist
+- Compare with checklist to identify:
+  - Files marked `[ ]` pending = likely missed (problem)
+  - Files marked `[-]` skipped = intentionally kept different (fine)
+  - Files marked `[x]` updated but still in diff = merge issues or user edits
+    (review)
+- Show verification results:
+  ```
+  ✅ All required files updated successfully
+  ℹ️ 2 files intentionally kept with user customizations:
+  - .claude/commands/thinking-partner.md (user's concise style)
+  - package.json (user's custom scripts preserved)
+  - or -
+  ⚠️ Warning: 2 files appear to be missed (still marked pending):
+  - .claude/commands/release.md
+  - .scripts/vault-stats.sh
+  ```
+- Only flag as problem if files are still marked `[ ]` pending in checklist
 
 ### 7. **Final Steps**
-   - Update version in package.json
-   - Verify all commands work
-   - Clean up temp directory: `rm -rf .tmp/claudesidian-upgrade`
-   - Save final checklist for reference (shows what was updated vs skipped)
-   - Show summary of what was updated
+
+- Update version in package.json
+- Verify all commands work
+- Clean up temp directory: `rm -rf .tmp/claudesidian-upgrade`
+- Save final checklist for reference (shows what was updated vs skipped)
+- Show summary of what was updated
 
 ## Update Categories
 
 ### 🤖 AI-Powered Intelligent Merge
+
 **Commands** (`.claude/commands/*.md`):
+
 - Analyze user's prompt style, output preferences, workflow modifications
 - Merge new features with existing customizations
 - Preserve user's tone, structure, and specific requirements
 
 **Agents** (`.claude/agents/*.md`):
+
 - Understand user's interaction preferences
 - Combine new capabilities with existing personality
 - Maintain user's established workflows
 
 **Templates** (`06_Metadata/Templates/*.md`):
+
 - Preserve custom fields and structure
 - Add new template features
 - Maintain user's formatting preferences
 
 ### ⚡ Automatic Safe Updates
+
 - **New commands/agents**: Purely additive, no conflicts
 - **Scripts** (`.scripts/*`): Utility functions, safe to replace
 - **Dependencies** (`package.json`): Security and feature updates
 - **Documentation**: README, CONTRIBUTING updates
 
 ### 🛡️ Never Modified
+
 - **User content**: All `00_*` through `06_*` folders (except templates)
 - **Personal config**: User's `CLAUDE.md`
 - **API keys**: `.mcp.json`, environment variables
@@ -182,6 +206,7 @@ When Claude detects conflicts:
 ### Example Scenarios:
 
 **Scenario 1: Command Enhancement**
+
 ```
 📝 thinking-partner command has updates:
 
@@ -202,6 +227,7 @@ Options:
 ```
 
 **Scenario 2: Template Updates**
+
 ```
 📋 Project Template has changes:
 
@@ -220,27 +246,33 @@ Apply merge? (y/n/preview)
 ## Command Usage
 
 ### Preview Mode (Recommended First Run)
+
 ```
 /upgrade check
 ```
+
 - Shows what would be updated
 - Displays intelligent merge previews
 - No changes made to files
 - Safe to run anytime
 
 ### Interactive Upgrade
+
 ```
 /upgrade
 ```
+
 - Step-by-step confirmation for each change
 - Shows before/after for modified files
 - Allows selective application of updates
 - Creates automatic backups
 
 ### Batch Upgrade (Advanced)
+
 ```
 /upgrade force
 ```
+
 - Applies all safe updates automatically
 - Still prompts for complex merges
 - Faster for users comfortable with the process
@@ -249,11 +281,13 @@ Apply merge? (y/n/preview)
 ## Safety Features
 
 ### Automatic Backups
+
 - Complete backup before any changes: `.backup/upgrade-[timestamp]/`
 - Individual file backups for each modification
 - Backup includes current git state and uncommitted changes
 
 ### Rollback Support
+
 ```
 # If upgrade causes issues:
 /rollback-upgrade [timestamp]
@@ -261,12 +295,14 @@ Apply merge? (y/n/preview)
 ```
 
 ### Verification Steps
+
 - Post-upgrade functionality testing
 - Command validation (runs test commands)
 - MCP server connectivity check
 - Git repository integrity verification
 
 ### Incremental Application
+
 - Updates applied one file at a time
 - Validation after each critical change
 - Stops on first error with clear diagnostics
@@ -275,23 +311,28 @@ Apply merge? (y/n/preview)
 ## Common Pitfalls to Avoid
 
 ### ⚠️ Selective Updates Problem
+
 **Never cherry-pick files based only on release notes!** This leads to:
+
 - Missing critical command updates
 - Incomplete feature implementations
 - Broken dependencies between files
 - Users not getting all improvements
 
-**Always use `git diff HEAD upstream/main --name-only`** to get the complete list of changed files, then update ALL relevant files systematically.
+**Always use `git diff HEAD upstream/main --name-only`** to get the complete
+list of changed files, then update ALL relevant files systematically.
 
 ## Error Handling
 
 ### Common Scenarios
+
 - **No internet connection**: Graceful failure with offline options
 - **GitHub API rate limits**: Intelligent retry with backoff
 - **Merge conflicts**: Clear explanation and manual resolution options
 - **Permission issues**: Helpful guidance on fixing file permissions
 
 ### Recovery Options
+
 - **Partial failure**: Continue from last successful step
 - **Complete failure**: Full rollback to pre-upgrade state
 - **Git conflicts**: Merge upstream changes with local commits
@@ -300,19 +341,23 @@ Apply merge? (y/n/preview)
 ## Advanced Features
 
 ### Custom Merge Rules
+
 Users can create `.upgrade-rules.json` to specify:
+
 - Files to always skip
 - Custom merge preferences
 - Automatic approval for specific change types
 - Backup retention policies
 
 ### Integration with Git
+
 - Commits each major change separately
 - Meaningful commit messages describing updates
 - Preserves user's branch structure
 - Handles git conflicts intelligently
 
 ### Selective Updates
+
 ```
 /upgrade commands-only    # Update just commands
 /upgrade agents-only      # Update just agents
@@ -510,4 +555,6 @@ Choice (1/2/3) > 1
 - User customizations preserved where intended
 ```
 
-This intelligent upgrade system leverages Claude's semantic understanding to provide the smoothest possible upgrade experience while ensuring no user customizations are lost.
+This intelligent upgrade system leverages Claude's semantic understanding to
+provide the smoothest possible upgrade experience while ensuring no user
+customizations are lost.
