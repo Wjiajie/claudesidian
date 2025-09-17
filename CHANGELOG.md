@@ -8,6 +8,19 @@ and this project adheres to
 
 ## [Unreleased]
 
+## [0.12.0] - 2025-01-17
+
+### Added
+
+- New `/download-attachment` command for downloading web content and files to Obsidian attachments folder
+- New `/pull-request` command for creating PRs with intelligent change analysis and description generation
+- Both commands integrate seamlessly with Obsidian's vault structure
+
+### Fixed
+
+- Security improvements in download command based on PR review feedback
+- Code formatting to pass lint checks
+
 ## [0.11.0] - 2025-01-17
 
 ### Added
@@ -360,7 +373,8 @@ and this project adheres to
 - API keys stored in environment variables
 - .mcp.json gitignored for security
 
-[Unreleased]: https://github.com/heyitsnoah/claudesidian/compare/v0.11.0...HEAD
+[Unreleased]: https://github.com/heyitsnoah/claudesidian/compare/v0.12.0...HEAD
+[0.12.0]: https://github.com/heyitsnoah/claudesidian/compare/v0.11.0...v0.12.0
 [0.11.0]: https://github.com/heyitsnoah/claudesidian/compare/v0.10.1...v0.11.0
 [0.10.1]: https://github.com/heyitsnoah/claudesidian/compare/v0.10.0...v0.10.1
 [0.10.0]: https://github.com/heyitsnoah/claudesidian/compare/v0.9.2...v0.10.0
