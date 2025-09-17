@@ -29,7 +29,21 @@ capabilities.
 ### 1. **Version Check & Setup**
 
 - Get current version from package.json
-- Create timestamped backup in `.backup/upgrade-YYYY-MM-DD-HHMMSS/`
+- Create timestamped backup in `.backup/upgrade-YYYY-MM-DD-HHMMSS/`:
+  ```bash
+  # Create backup directory
+  BACKUP_DIR=".backup/upgrade-$(date +%Y-%m-%d-%H%M%S)"
+  mkdir -p "$BACKUP_DIR"
+
+  # Copy all important files to backup
+  cp -r .claude "$BACKUP_DIR/"
+  cp -r .scripts "$BACKUP_DIR/"
+  cp package.json "$BACKUP_DIR/"
+  cp CHANGELOG.md "$BACKUP_DIR/" 2>/dev/null || true
+  cp README.md "$BACKUP_DIR/" 2>/dev/null || true
+
+  echo "✅ Backup created in $BACKUP_DIR"
+  ```
 - Clone latest claudesidian to temp directory (doesn't affect user's repo):
   ```bash
   # Get fresh copy in .tmp dir (hidden from Obsidian) - user's repo stays disconnected
