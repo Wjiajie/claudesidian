@@ -5,6 +5,7 @@
 ## Prerequisites Check
 
 Run these commands to verify you have everything needed:
+
 ```bash
 node --version  # Should be v22+
 pnpm --version  # Should be installed
@@ -12,19 +13,22 @@ claude --version  # Claude Code should be installed
 ```
 
 If any are missing:
+
 - Node.js: Install from [nodejs.org](https://nodejs.org/) (v22+)
 - pnpm: `npm install -g pnpm`
 - Claude Code: Download from [claude.ai/code](https://claude.ai/code)
 
 ## Step 1: Get Your Gemini API Key
 
-1. Go to [https://aistudio.google.com/apikey](https://aistudio.google.com/apikey)
+1. Go to
+   [https://aistudio.google.com/apikey](https://aistudio.google.com/apikey)
 2. Click "Create API Key"
 3. Copy the key (starts with `AIzaSy...`)
 
 ## Step 2: Set Up Environment Variable
 
 ### For Linux/macOS with Bash:
+
 ```bash
 echo 'export GEMINI_API_KEY="your-actual-api-key-here"' >> ~/.bashrc
 source ~/.bashrc
@@ -32,6 +36,7 @@ echo $GEMINI_API_KEY  # Verify it shows your key
 ```
 
 ### For Linux/macOS with Zsh:
+
 ```bash
 echo 'export GEMINI_API_KEY="your-actual-api-key-here"' >> ~/.zshrc
 source ~/.zshrc
@@ -39,6 +44,7 @@ echo $GEMINI_API_KEY  # Verify it shows your key
 ```
 
 ### For Windows PowerShell:
+
 ```powershell
 [System.Environment]::SetEnvironmentVariable('GEMINI_API_KEY', 'your-key-here', 'User')
 # Restart PowerShell
@@ -50,11 +56,13 @@ $env:GEMINI_API_KEY  # Verify it shows your key
 **⚠️ CRITICAL: This step MUST be done before adding the MCP server!**
 
 Navigate to your Obsidian vault:
+
 ```bash
 cd ~/dev/02_Areas/Obsidian  # Or wherever your vault is
 ```
 
 Install the required dependencies:
+
 ```bash
 # Install npm packages (REQUIRED - do this first!)
 pnpm install
@@ -65,9 +73,12 @@ pnpm install
 # - Other dependencies from package.json
 ```
 
-**Common Error Fix**: If you see `Error [ERR_MODULE_NOT_FOUND]: Cannot find package '@modelcontextprotocol/sdk'`, you forgot to run `pnpm install`!
+**Common Error Fix**: If you see
+`Error [ERR_MODULE_NOT_FOUND]: Cannot find package '@modelcontextprotocol/sdk'`,
+you forgot to run `pnpm install`!
 
 **To hide node_modules from Obsidian** (optional but recommended):
+
 1. Open Obsidian
 2. Go to Settings → Files & Links → Excluded files
 3. Click "Manage"
@@ -79,18 +90,21 @@ This keeps your vault clean while using standard Node.js module resolution.
 ## Step 4: Register the MCP Server
 
 **For project-scoped installation (recommended for team use):**
+
 ```bash
 # Add server to project (creates .mcp.json file)
 claude mcp add --scope project gemini-vision node .claude/mcp-servers/gemini-vision.mjs
 ```
 
 **For user-scoped installation (personal use across all projects):**
+
 ```bash
 # Add server to your user config
 claude mcp add --scope user gemini-vision node .claude/mcp-servers/gemini-vision.mjs
 ```
 
 After adding, you'll need to edit the `.mcp.json` file to add your API key:
+
 ```json
 {
   "mcpServers": {
@@ -107,6 +121,7 @@ After adding, you'll need to edit the `.mcp.json` file to add your API key:
 ```
 
 **IMPORTANT**:
+
 - The command must be run from the Obsidian vault root directory
 - You MUST have run `pnpm install` first
 - The `.mcp.json` file is gitignored for security
@@ -114,15 +129,16 @@ After adding, you'll need to edit the `.mcp.json` file to add your API key:
 ## Step 5: Verify It's Working
 
 1. **Open a NEW Claude Code window** (critical - must be new):
+
    ```bash
    cd ~/dev/Obsidian
    claude
    ```
 
-2. **Check the server is connected**:
-   Type `/mcp` in Claude
+2. **Check the server is connected**: Type `/mcp` in Claude
 
    You should see:
+
    ```
    gemini-vision ✔ connected
    ```
@@ -137,11 +153,13 @@ After adding, you'll need to edit the `.mcp.json` file to add your API key:
 ### "gemini-vision failed" or not showing in /mcp
 
 1. **MOST COMMON ISSUE - Dependencies not installed**:
+
    ```bash
    # If you see: Error [ERR_MODULE_NOT_FOUND]: Cannot find package '@modelcontextprotocol/sdk'
    # Run this:
    pnpm install
    ```
+
    Then reconnect the MCP server in Claude Code.
 
 2. **Check API key is configured**:
@@ -150,21 +168,24 @@ After adding, you'll need to edit the `.mcp.json` file to add your API key:
    - The key should be in the format: `"GEMINI_API_KEY": "AIzaSy..."`
 
 3. **Test server can run directly**:
+
    ```bash
    export GEMINI_API_KEY="your-api-key-here"
    node .claude/mcp-servers/gemini-vision.mjs
    ```
-   Should show: "🚀 Gemini Vision MCP Server running"
-   Press Ctrl+C to exit.
+
+   Should show: "🚀 Gemini Vision MCP Server running" Press Ctrl+C to exit.
 
 4. **Re-add the server (for project scope)**:
+
    ```bash
    claude mcp remove gemini-vision --scope project
    claude mcp add --scope project gemini-vision node .claude/mcp-servers/gemini-vision.mjs
    # Then edit .mcp.json to add your API key
    ```
 
-4. **Check logs**:
+5. **Check logs**:
+
    ```bash
    # Find log directory
    ls ~/Library/Caches/claude-cli-nodejs/*/mcp-logs-gemini-vision/
@@ -178,12 +199,15 @@ After adding, you'll need to edit the `.mcp.json` file to add your API key:
 ### "Cannot find module" errors
 
 1. **Verify package.json exists**:
+
    ```bash
    cat package.json
    ```
+
    Should show @google/generative-ai and @modelcontextprotocol/sdk
 
 2. **Reinstall dependencies**:
+
    ```bash
    rm -rf node_modules pnpm-lock.yaml
    pnpm install
@@ -197,9 +221,11 @@ After adding, you'll need to edit the `.mcp.json` file to add your API key:
 ### Server runs but tools don't work
 
 1. **Test API key directly**:
+
    ```bash
    curl "https://generativelanguage.googleapis.com/v1beta/models?key=$GEMINI_API_KEY"
    ```
+
    Should return a list of models, not an error.
 
 2. **Check file paths**:
@@ -211,6 +237,7 @@ After adding, you'll need to edit the `.mcp.json` file to add your API key:
 Once working, you can use these in Claude:
 
 ### Image Analysis
+
 ```
 # Analyze an image
 Use gemini-vision to analyze 05 Attachments/screenshot.png
@@ -229,6 +256,7 @@ Use gemini-vision to analyze multiple: image1.png, image2.png, image3.png
 ```
 
 ### Video Analysis (NEW!)
+
 ```
 # Analyze a local video file
 Use gemini-vision to analyze video 05 Attachments/video.mp4
@@ -240,14 +268,15 @@ Use gemini-vision to analyze YouTube video https://www.youtube.com/watch?v=VIDEO
 Use gemini-vision to analyze video file.mp4 and extract all visible text
 ```
 
-**Note:** Video processing may take 30-60 seconds as files need to reach ACTIVE state before analysis. The server will automatically wait and show progress updates.
+**Note:** Video processing may take 30-60 seconds as files need to reach ACTIVE
+state before analysis. The server will automatically wait and show progress
+updates.
 
 ### Supported Formats
 
-**Images:** JPG, JPEG, PNG, GIF, BMP, WebP
-**Videos:** MP4, AVI, MOV, WebM, MKV, WMV, FLV, 3GP, M4V
-**Documents:** PDF, TXT, DOC, DOCX, ODT, RTF
-**Special:** YouTube URLs (direct support without download)
+**Images:** JPG, JPEG, PNG, GIF, BMP, WebP **Videos:** MP4, AVI, MOV, WebM, MKV,
+WMV, FLV, 3GP, M4V **Documents:** PDF, TXT, DOC, DOCX, ODT, RTF **Special:**
+YouTube URLs (direct support without download)
 
 ## Quick Reinstall (If Already Set Up Once)
 
@@ -282,4 +311,4 @@ Then open a new Claude window and test.
 
 ---
 
-*Last tested: September 2025*
+_Last tested: September 2025_

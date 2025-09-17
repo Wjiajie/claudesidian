@@ -1,13 +1,19 @@
 ---
 name: release
-description: Automatically bump version, update changelog, commit, tag, and push a new release based on recent changes
+description:
+  Automatically bump version, update changelog, commit, tag, and push a new
+  release based on recent changes
 allowed-tools: [Read, Write, Edit, MultiEdit, Bash, Grep]
-argument-hint: "(optional) 'major', 'minor', 'patch', or leave blank for auto-detection"
+argument-hint:
+  "(optional) 'major', 'minor', 'patch', or leave blank for auto-detection"
 ---
 
 # Release Command
 
-Automates the entire release process: analyzes recent commits to determine version bump type, updates version in package.json, moves unreleased changelog entries to the new version, commits everything, creates a git tag, and pushes to GitHub.
+Automates the entire release process: analyzes recent commits to determine
+version bump type, updates version in package.json, moves unreleased changelog
+entries to the new version, commits everything, creates a git tag, and pushes to
+GitHub.
 
 ## Task
 
@@ -62,11 +68,14 @@ Automates the entire release process: analyzes recent commits to determine versi
 ### Semantic Versioning (MAJOR.MINOR.PATCH)
 
 **Quick Decision Guide:**
+
 - Can users do something they couldn't do before? → **MINOR**
-- Did something that worked break? → **MAJOR** (if breaking) or **PATCH** (if fixing)
+- Did something that worked break? → **MAJOR** (if breaking) or **PATCH** (if
+  fixing)
 - Did something that worked get better? → **PATCH**
 
 **MAJOR** (1.0.0 → 2.0.0):
+
 - Breaking changes that require users to change their code/config
 - Removing features or commands
 - Changing command syntax or behavior incompatibly
@@ -74,6 +83,7 @@ Automates the entire release process: analyzes recent commits to determine versi
 - Commits with "!" after type (e.g., "feat!:")
 
 **MINOR** (1.0.0 → 1.1.0):
+
 - **NEW capabilities** added (not enhancements to existing features)
 - Making something possible that wasn't possible before
 - New commands, new tools, new integrations
@@ -88,12 +98,14 @@ Automates the entire release process: analyzes recent commits to determine versi
   - Enabling a feature to work offline when it required internet before
 
 **PATCH** (1.0.0 → 1.0.1):
+
 - Bug fixes and minor improvements
 - Enhancements to existing features (that already worked)
 - Performance improvements
 - Documentation updates
 - Refactoring without changing behavior
-- Commits with "fix:", "docs:", "style:", "refactor:", "perf:", "test:", "chore:"
+- Commits with "fix:", "docs:", "style:", "refactor:", "perf:", "test:",
+  "chore:"
 - Examples:
   - Making an existing command smarter (but not enabling new use cases)
   - Improving error messages
@@ -104,18 +116,22 @@ Automates the entire release process: analyzes recent commits to determine versi
 ### Commit Message Best Practices
 
 **Use "feat:" only for NEW features:**
+
 - ✅ `feat: add vault import capability`
 - ❌ `feat: enhance vault import` (should be `fix:` or `refactor:`)
 
 **Use "fix:" for improvements and corrections:**
+
 - ✅ `fix: improve vault detection accuracy`
 - ✅ `fix: correct file counting in init-bootstrap`
 
 **Use "refactor:" for code improvements:**
+
 - ✅ `refactor: enhance profile building with URL fetching`
 - ✅ `refactor: make init-bootstrap questions smarter`
 
 **Use "perf:" for performance improvements:**
+
 - ✅ `perf: optimize vault analysis for large vaults`
 
 ## Example Usage

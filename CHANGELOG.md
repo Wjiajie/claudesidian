@@ -3,19 +3,23 @@
 All notable changes to claudesidian will be documented in this file.
 
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
-and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
+and this project adheres to
+[Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ## [Unreleased]
 
 ## [0.10.1] - 2025-01-15
 
 ### Fixed
-- Corrected GitHub Action configuration to use claude_args instead of allowed_tools
+
+- Corrected GitHub Action configuration to use claude_args instead of
+  allowed_tools
 - Fixed workflow validation error for allowed tools parameter
 
 ## [0.10.0] - 2025-01-15
 
 ### Added
+
 - GitHub Actions workflow for Claude Code integration
 - Claude can now respond to @claude mentions in issues and PRs
 - Configured permissions for Claude to create PRs and push changes
@@ -28,39 +32,53 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ## [0.9.2] - 2025-01-14
 
 ### Fixed
+
 - Corrected Firecrawl script examples to use `npm run` commands
-- Added contributing guideline about reviewing AI-generated content before submission
+- Added contributing guideline about reviewing AI-generated content before
+  submission
 
 ### Removed
+
 - Removed Common Patterns section from README (redundant)
 
 ## [0.9.1] - 2025-01-14
 
 ### Changed
-- Enhanced Gemini Vision documentation to explain direct image/PDF processing benefits
-- Enhanced Firecrawl documentation to explain full-text capture and context preservation
+
+- Enhanced Gemini Vision documentation to explain direct image/PDF processing
+  benefits
+- Enhanced Firecrawl documentation to explain full-text capture and context
+  preservation
 - Added detailed API key setup instructions for both Gemini and Firecrawl
 
 ### Removed
-- Removed Essential Workflows section from README (redundant with command descriptions)
+
+- Removed Essential Workflows section from README (redundant with command
+  descriptions)
 
 ## [0.9.0] - 2025-01-14
 
 ### Added
-- Enhanced upgrade command documentation with detailed usage examples and safety features
+
+- Enhanced upgrade command documentation with detailed usage examples and safety
+  features
 - Contributing section with guidelines for community contributions
 - MIT license file for clear open-source licensing
 
 ### Changed
+
 - Improved documentation clarity on Claude Code commands vs agents distinction
-- Updated contributing guidelines to encourage PRs for commands, agents, and core updates
+- Updated contributing guidelines to encourage PRs for commands, agents, and
+  core updates
 
 ### Removed
+
 - Removed thinking-partner agent (keeping slash command only)
 
 ## [0.8.8] - 2025-01-13
 
 ### Fixed
+
 - Added critical warnings to upgrade command documentation
 - Emphasized requirement to show diffs before applying changes
 - Added correct vs wrong implementation examples
@@ -69,6 +87,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ## [0.8.7] - 2025-01-13
 
 ### Fixed
+
 - Release command now automatically creates GitHub release using gh CLI
 - Prevents missing GitHub releases (like v0.8.2-v0.8.5 were)
 - Extracts release notes from CHANGELOG.md for GitHub release body
@@ -76,11 +95,14 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ## [0.8.6] - 2025-01-13
 
 ### Changed
-- Improved semantic versioning guidelines in release command with clearer decision guide
+
+- Improved semantic versioning guidelines in release command with clearer
+  decision guide
 
 ## [0.8.5] - 2025-01-13
 
 ### Fixed
+
 - Upgrade command now works without git connection for disconnected users
 - Clone latest version to .tmp/ directory instead of requiring upstream remote
 - Use .tmp/ instead of /tmp/ to hide upgrade files from Obsidian
@@ -91,6 +113,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ## [0.8.4] - 2025-01-13
 
 ### Fixed
+
 - Simplified upgrade command to systematically check all system files
 - Created upgrade checklist to track progress file-by-file
 - Filtered upgrades to only claudesidian system files, not user content
@@ -100,6 +123,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ## [0.8.3] - 2025-01-13
 
 ### Fixed
+
 - Improved init-bootstrap vault selection for multiple vaults
 - Added explicit confirmation before importing any vault
 - Enhanced user identification prompts with better explanations
@@ -109,6 +133,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ## [0.8.2] - 2025-01-13
 
 ### Fixed
+
 - Improved SessionStart hook formatting with arrow indicators for commands
 - Fixed update notification display to show clean output instead of raw JSON
 - Enhanced visual layout of first-run and update messages
@@ -116,6 +141,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ## [0.8.1] - 2025-01-13
 
 ### Changed
+
 - Updated README with comprehensive feature descriptions including:
   - Smart vault analysis and pattern detection capabilities
   - User research and profile building features
@@ -126,19 +152,24 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ## [0.8.0] - 2025-01-13
 
 ### Added
+
 - Automatic update check on session start
-- SessionStart hook that fetches latest version from GitHub and compares to local
+- SessionStart hook that fetches latest version from GitHub and compares to
+  local
 - Update notifications when newer versions are available
 - check-updates npm script for version comparison
 - Works even after disconnecting from original repository
 
 ### Changed
-- Enhanced release command documentation with clearer semantic versioning guidelines
+
+- Enhanced release command documentation with clearer semantic versioning
+  guidelines
 - Better guidance on when to use feat: vs fix: vs refactor: in commits
 
 ## [0.7.0] - 2025-01-13
 
 ### Added
+
 - Comprehensive vault analysis using tree, note sampling, and pattern detection
 - Enhanced profile building with URL fetching and custom context
 - Dynamic date generation for timestamps in CLAUDE.md
@@ -147,6 +178,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Deeper research capabilities with disambiguation confirmation
 
 ### Changed
+
 - init-bootstrap now analyzes vault structure before importing
 - Always confirms user identity even with single search result
 - Waits to create folders until after organization method selection
@@ -155,6 +187,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Profile building includes comprehensive background from provided URLs
 
 ### Fixed
+
 - Correct file counting without depth limits
 - Proper ordering of import before personalization questions
 - More accurate detection of user preferences from existing vault
@@ -162,6 +195,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ## [0.6.0] - 2025-01-13
 
 ### Added
+
 - Intelligent vault import that preserves existing structure in OLD_VAULT folder
 - Auto-detection of existing Obsidian vaults by searching for .obsidian folders
 - User research and disambiguation for personalized setup
@@ -173,6 +207,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Clear examples for folder naming when cloning repository
 
 ### Changed
+
 - init-bootstrap now imports entire vault structure safely without data loss
 - Gemini Vision and Firecrawl prompts clarify tools are already included
 - README includes examples of custom folder names when cloning
@@ -181,18 +216,21 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ## [0.5.0] - 2025-01-13
 
 ### Added
+
 - First-run welcome message using SessionStart hook
 - FIRST_RUN marker file to detect fresh installations
 - Markdown-formatted welcome prompt with setup instructions
 - Automatic detection and guidance for new users
 
 ### Changed
+
 - init-bootstrap now removes FIRST_RUN marker after setup completion
 - Hook configuration uses inline commands (no external scripts needed)
 
 ## [0.4.0] - 2025-01-13
 
 ### Added
+
 - Simplified setup process with enhanced init-bootstrap command:
   - Automatic disconnection from original repository
   - Folder rename assistance for non-git users
@@ -201,12 +239,15 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Multiple setup paths in README for different user skill levels
 
 ### Changed
+
 - init-bootstrap now handles complete environment setup including git management
-- README updated with clearer Quick Start instructions for both technical and non-technical users
+- README updated with clearer Quick Start instructions for both technical and
+  non-technical users
 
 ## [0.3.1] - 2025-01-13
 
 ### Fixed
+
 - Removed CLAUDE.md and settings.local.json from repository tracking
 - These user-specific files are now generated locally by init-bootstrap
 - Added both files to .gitignore to prevent accidental commits
@@ -215,8 +256,10 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ## [0.3.0] - 2025-01-13
 
 ### Added
+
 - Intelligent upgrade command (`/upgrade`) with AI-powered semantic merging
-- Smart conflict resolution that preserves user customizations while adding new features
+- Smart conflict resolution that preserves user customizations while adding new
+  features
 - Automatic backup system with rollback capabilities
 - Selective update categories (AI-mergeable, auto-safe, protected)
 - Based on 2025 best practices for LLM-powered code migration
@@ -224,11 +267,13 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ## [0.2.3] - 2025-01-13
 
 ### Changed
+
 - Updated init-bootstrap command and settings configuration
 
 ## [0.2.2] - 2025-01-13
 
 ### Fixed
+
 - Corrected all documentation to use proper slash command syntax (/command-name)
 - Fixed examples showing incorrect 'claude run' syntax
 - Updated README, CLAUDE.md, install.sh, and command docs
@@ -236,6 +281,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ## [0.2.1] - 2025-01-13
 
 ### Changed
+
 - Updated README to use init-bootstrap command instead of install.sh
 - Simplified Quick Start instructions to 2-step process
 - Added examples of pre-configured commands in README
@@ -243,6 +289,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ## [0.2.0] - 2025-01-13
 
 ### Added
+
 - Release command for automated version management and releases
 - Gemini Vision video analysis support:
   - Local video files (MP4, AVI, MOV, WebM, MKV, WMV, FLV, 3GP, M4V)
@@ -251,12 +298,15 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Updated documentation with video analysis examples
 
 ### Changed
-- Enhanced init-bootstrap command with full environment setup including MCP configuration
+
+- Enhanced init-bootstrap command with full environment setup including MCP
+  configuration
 - Updated Gemini Vision MCP server to support video formats
 
 ## [0.1.0] - 2025-01-13
 
 ### Added
+
 - Initial release of claudesidian - Claude Code + Obsidian starter kit
 - PARA method folder structure (00_Inbox through 06_Metadata)
 - Bootstrap initialization system via `claude run init-bootstrap`
@@ -286,9 +336,11 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Git integration with proper .gitignore
 
 ### Changed
+
 - Replaced static CLAUDE.md with dynamic init-bootstrap command
 
 ### Security
+
 - API keys stored in environment variables
 - .mcp.json gitignored for security
 
