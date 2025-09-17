@@ -8,6 +8,21 @@ and this project adheres to
 
 ## [Unreleased]
 
+## [0.11.0] - 2025-01-17
+
+### Added
+
+- Comprehensive linting and formatting setup with ESLint and Prettier
+- Configuration files organized in `.config/` folder for better project structure
+- GitHub Action workflow for automated lint checks on pull requests
+- Package manager specification for consistent dependency management
+
+### Fixed
+
+- Resolved lonely if ESLint warning for cleaner code
+- GitHub Action configuration for proper pnpm setup
+- Added packageManager field to ensure consistent tooling across environments
+
 ## [0.10.1] - 2025-01-15
 
 ### Fixed
@@ -344,7 +359,8 @@ and this project adheres to
 - API keys stored in environment variables
 - .mcp.json gitignored for security
 
-[Unreleased]: https://github.com/heyitsnoah/claudesidian/compare/v0.10.1...HEAD
+[Unreleased]: https://github.com/heyitsnoah/claudesidian/compare/v0.11.0...HEAD
+[0.11.0]: https://github.com/heyitsnoah/claudesidian/compare/v0.10.1...v0.11.0
 [0.10.1]: https://github.com/heyitsnoah/claudesidian/compare/v0.10.0...v0.10.1
 [0.10.0]: https://github.com/heyitsnoah/claudesidian/compare/v0.9.2...v0.10.0
 [0.9.2]: https://github.com/heyitsnoah/claudesidian/compare/v0.9.1...v0.9.2
