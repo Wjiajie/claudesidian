@@ -1,100 +1,111 @@
 # Pull Request Command
 
-Creates a new feature branch, commits changes, pushes to GitHub, and opens a pull request - all in one command. Perfect for contributing features or fixes.
+Creates a new feature branch, commits changes, pushes to GitHub, and opens a
+pull request - all in one command. Perfect for contributing features or fixes.
 
 ## Task
 
-Automate the entire pull request workflow: create branch, stage changes, commit with descriptive message, push to GitHub, and open PR with proper description.
+Automate the entire pull request workflow: create branch, stage changes, commit
+with descriptive message, push to GitHub, and open PR with proper description.
 
 ## Process
 
 ### 1. **Check Prerequisites**
-   - Ensure git repository exists
-   - Check for uncommitted changes to include
-   - Verify GitHub CLI (`gh`) is available
-   - Get current branch as base branch
-   - If already on feature branch, ask: "Create PR from current branch?"
+
+- Ensure git repository exists
+- Check for uncommitted changes to include
+- Verify GitHub CLI (`gh`) is available
+- Get current branch as base branch
+- If already on feature branch, ask: "Create PR from current branch?"
 
 ### 2. **Create Feature Branch**
-   ```bash
-   # Generate branch name from PR title or use provided name
-   # Sanitize branch name: lowercase, replace spaces with hyphens, remove special chars
-   branch_name=$(echo "$branch_name" | tr '[:upper:]' '[:lower:]' | sed 's/[^a-z0-9-]/-/g' | sed 's/--*/-/g')
 
-   # Check if branch already exists
-   if git show-ref --verify --quiet refs/heads/$branch_name; then
-     echo "Branch $branch_name already exists, using alternative name"
-     branch_name="${branch_name}-$(date +%s)"
-   fi
+```bash
+# Generate branch name from PR title or use provided name
+# Sanitize branch name: lowercase, replace spaces with hyphens, remove special chars
+branch_name=$(echo "$branch_name" | tr '[:upper:]' '[:lower:]' | sed 's/[^a-z0-9-]/-/g' | sed 's/--*/-/g')
 
-   # Format: feature/short-description or fix/issue-name
-   git checkout -b $branch_name
-   ```
+# Check if branch already exists
+if git show-ref --verify --quiet refs/heads/$branch_name; then
+  echo "Branch $branch_name already exists, using alternative name"
+  branch_name="${branch_name}-$(date +%s)"
+fi
+
+# Format: feature/short-description or fix/issue-name
+git checkout -b $branch_name
+```
 
 ### 3. **Stage and Review Changes**
-   - Show `git status` to user
-   - Show `git diff --staged` for review
-   - If no staged changes, stage all changes: `git add -A`
-   - Confirm changes with user before proceeding
+
+- Show `git status` to user
+- Show `git diff --staged` for review
+- If no staged changes, stage all changes: `git add -A`
+- Confirm changes with user before proceeding
 
 ### 4. **Commit Changes**
-   - Analyze changes to create meaningful commit message
-   - Use conventional commits format (feat:, fix:, docs:, etc.)
-   - Include detailed commit body if changes are complex
-   ```bash
-   git commit -m "feat: add new feature
 
-   - Detail 1
-   - Detail 2
+- Analyze changes to create meaningful commit message
+- Use conventional commits format (feat:, fix:, docs:, etc.)
+- Include detailed commit body if changes are complex
 
-   🤖 Generated with Claude Code"
-   ```
+```bash
+git commit -m "feat: add new feature
+
+- Detail 1
+- Detail 2
+
+🤖 Generated with Claude Code"
+```
 
 ### 5. **Push to GitHub**
-   ```bash
-   # Push with upstream tracking
-   git push -u origin feature/[branch-name]
-   ```
+
+```bash
+# Push with upstream tracking
+git push -u origin feature/[branch-name]
+```
 
 ### 6. **Create Pull Request**
-   Use `gh pr create` with:
-   - Descriptive title
-   - Detailed body with:
-     - Summary of changes
-     - Testing checklist
-     - Related issues (if any)
-   - Set base branch (usually main/master)
 
-   ```bash
-   gh pr create \
-     --title "Feature: Add awesome new capability" \
-     --body "$(cat <<'EOF'
-   ## Summary
-   Brief description of what this PR does
+Use `gh pr create` with:
 
-   ## Changes
-   - Added feature X
-   - Fixed bug Y
-   - Improved performance of Z
+- Descriptive title
+- Detailed body with:
+  - Summary of changes
+  - Testing checklist
+  - Related issues (if any)
+- Set base branch (usually main/master)
 
-   ## Testing
-   - [ ] Tested locally
-   - [ ] All tests pass
-   - [ ] Documentation updated
+```bash
+gh pr create \
+  --title "Feature: Add awesome new capability" \
+  --body "$(cat <<'EOF'
+## Summary
+Brief description of what this PR does
 
-   ## Screenshots
-   (if applicable)
+## Changes
+- Added feature X
+- Fixed bug Y
+- Improved performance of Z
 
-   🤖 Generated with [Claude Code](https://claude.ai/code)
-   EOF
-   )" \
-     --base main
-   ```
+## Testing
+- [ ] Tested locally
+- [ ] All tests pass
+- [ ] Documentation updated
+
+## Screenshots
+(if applicable)
+
+🤖 Generated with [Claude Code](https://claude.ai/code)
+EOF
+)" \
+  --base main
+```
 
 ### 7. **Provide Next Steps**
-   - Show PR URL
-   - Remind about review process
-   - Suggest next actions (request review, add labels, etc.)
+
+- Show PR URL
+- Remind about review process
+- Suggest next actions (request review, add labels, etc.)
 
 ## Arguments
 
@@ -142,6 +153,7 @@ Next steps:
 ## Commit Message Format
 
 Follow conventional commits:
+
 - `feat:` New feature
 - `fix:` Bug fix
 - `docs:` Documentation only

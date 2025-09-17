@@ -13,7 +13,8 @@ and this project adheres to
 ### Added
 
 - Comprehensive linting and formatting setup with ESLint and Prettier
-- Configuration files organized in `.config/` folder for better project structure
+- Configuration files organized in `.config/` folder for better project
+  structure
 - GitHub Action workflow for automated lint checks on pull requests
 - Package manager specification for consistent dependency management
 
