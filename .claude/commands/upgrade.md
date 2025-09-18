@@ -30,6 +30,7 @@ capabilities.
 
 - Get current version from package.json
 - Check if already on latest version:
+
   ```bash
   CURRENT=$(grep '"version"' package.json | sed 's/.*: "\(.*\)".*/\1/')
   LATEST=$(curl -s https://raw.githubusercontent.com/heyitsnoah/claudesidian/main/package.json | grep '"version"' | sed 's/.*: "\(.*\)".*/\1/')
@@ -39,7 +40,9 @@ capabilities.
     exit 0
   fi
   ```
+
 - Create timestamped backup in `.backup/upgrade-YYYY-MM-DD-HHMMSS/`:
+
   ```bash
   # Create backup directory
   BACKUP_DIR=".backup/upgrade-$(date +%Y-%m-%d-%H%M%S)"
@@ -54,6 +57,7 @@ capabilities.
 
   echo "✅ Backup created in $BACKUP_DIR"
   ```
+
 - Clone latest claudesidian to temp directory (doesn't affect user's repo):
   ```bash
   # Get fresh copy in .tmp dir (hidden from Obsidian) - user's repo stays disconnected
@@ -64,6 +68,7 @@ capabilities.
 ### 2. **Create Upgrade Checklist**
 
 - Compare system files between current directory and .tmp/claudesidian-upgrade/:
+
   ```bash
   # Find all system files that differ AND new files in upstream
   # First, find files that exist in both but differ
@@ -77,6 +82,7 @@ capabilities.
     [ ! -f "$local_file" ] && echo "NEW: $local_file"
   done
   ```
+
 - Create checklist of files that need review
 - Explicitly EXCLUDE:
   - User content folders (00_Inbox, 01_Projects, etc.)
@@ -140,9 +146,9 @@ For EACH file in the checklist:
       Choice (1/2/3/4): [WAIT FOR USER TO TYPE NUMBER AND PRESS ENTER]
       ```
 
-      **IMPORTANT**: Actually WAIT for the user to type their choice!
-      Do NOT automatically select any option. The user must manually
-      type 1, 2, 3, or 4 and press Enter.
+      **IMPORTANT**: Actually WAIT for the user to type their choice! Do NOT
+      automatically select any option. The user must manually type 1, 2, 3, or 4
+      and press Enter.
 
 4.  Apply the chosen strategy:
     - **For option 1 (Apply update/Take upstream)**:
@@ -175,7 +181,9 @@ For EACH file in the checklist:
 - **Never touch**: User content folders, CLAUDE.md, API configs
 
 #### Batch Updates for Similar Files
+
 For commands that have only formatting changes, you can batch update:
+
 ```bash
 # Batch update multiple command files with same type of changes
 for file in thinking-partner.md daily-review.md inbox-processor.md; do
@@ -187,7 +195,9 @@ done
 ```
 
 #### Handling Missing Upstream Files
+
 Some files may exist locally but not in upstream (like deprecated agents):
+
 ```bash
 # Check if file exists in upstream before trying to update
 if [ ! -f ".tmp/claudesidian-upgrade/$filepath" ]; then
