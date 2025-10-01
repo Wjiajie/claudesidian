@@ -8,6 +8,16 @@ and this project adheres to
 
 ## [Unreleased]
 
+## [0.12.1] - 2025-01-17
+
+### Fixed
+
+- Improved upgrade command to prevent interactive prompts and hanging
+- Enhanced upgrade command with explicit backup steps and non-interactive file
+  replacement
+- Refined upgrade command based on real usage feedback for better reliability
+- Applied linting fixes to upgrade command for code quality
+
 ## [0.12.0] - 2025-01-17
 
 ### Added
@@ -375,7 +385,8 @@ and this project adheres to
 - API keys stored in environment variables
 - .mcp.json gitignored for security
 
-[Unreleased]: https://github.com/heyitsnoah/claudesidian/compare/v0.12.0...HEAD
+[Unreleased]: https://github.com/heyitsnoah/claudesidian/compare/v0.12.1...HEAD
+[0.12.1]: https://github.com/heyitsnoah/claudesidian/compare/v0.12.0...v0.12.1
 [0.12.0]: https://github.com/heyitsnoah/claudesidian/compare/v0.11.0...v0.12.0
 [0.11.0]: https://github.com/heyitsnoah/claudesidian/compare/v0.10.1...v0.11.0
 [0.10.1]: https://github.com/heyitsnoah/claudesidian/compare/v0.10.0...v0.10.1
