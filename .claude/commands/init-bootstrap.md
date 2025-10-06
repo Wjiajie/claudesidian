@@ -51,7 +51,12 @@ Then generate a customized CLAUDE.md file tailored to their needs.
 
 3. **Gather Vault Information**
    - Search common locations for existing Obsidian vaults (.obsidian folder)
-   - Check: ~/Documents, ~/Desktop, home directory, current directory parent
+   - Check these paths with appropriate depth limits:
+     - `~/Documents` (maxdepth 3)
+     - `~/Desktop` (maxdepth 3)
+     - `~/Library/Mobile Documents/iCloud~md~obsidian/Documents` (maxdepth 5 - iCloud vaults)
+     - Home directory `~/` (maxdepth 2)
+     - Current directory parent (maxdepth 2)
    - If found, ask: "Found Obsidian vault at [path]. Is this the vault you want
      to import?"
    - Count files correctly: `find [path] -type f -name "*.md" | wc -l` (no depth
@@ -64,8 +69,11 @@ Then generate a customized CLAUDE.md file tailored to their needs.
      - Check for daily notes folder and format
      - Identify most active folders by file count
      - Detect if using PARA, Zettelkasten, Johnny Decimal, or custom
-   - If not the right one or none found, ask for path to existing vault
-   - If no existing vault, they're starting fresh
+   - If not the right one or none found:
+     - Ask: "Is your vault stored in iCloud Drive? (yes/no)"
+     - If yes: "Please enter the full path to your vault (e.g., ~/Library/Mobile Documents/iCloud~md~obsidian/Documents/YourVault)"
+     - If no: "Please enter the path to your existing vault, or type 'skip' to start fresh"
+   - If no existing vault or user skips, they're starting fresh
 
 4. **Ask Configuration Questions**
    - "What's your name?" (for personalization)
@@ -349,6 +357,26 @@ If the user's response is unclear:
 - Example: "I want to make sure I import the right vault. Please type the number
   of your choice (1, 2, or 3)."
 
+### iCloud Vault Search Implementation
+
+When searching for vaults, use this find command pattern:
+
+```bash
+# Standard locations (shallow search)
+find ~/Documents ~/Desktop -maxdepth 3 -type d -name ".obsidian" 2>/dev/null
+
+# iCloud location (deeper search needed due to nested structure)
+find ~/Library/Mobile\ Documents/iCloud~md~obsidian/Documents -maxdepth 5 -type d -name ".obsidian" 2>/dev/null
+
+# Home directory (shallow to avoid deep recursion)
+find ~ -maxdepth 2 -type d -name ".obsidian" 2>/dev/null
+```
+
+The iCloud path requires:
+- Higher maxdepth (5) due to nested folder structure
+- Escaped spaces in path name
+- Silent error handling (2>/dev/null) as many users won't have iCloud
+
 ## Interactive Example
 
 ````
@@ -407,8 +435,8 @@ First-run marker removed
 
 Now let me ask you a few questions to customize your setup:
 
-🔍 **Searching for existing Obsidian vaults...** [Searches ~/Documents,
-~/Desktop, ~/, and parent directories]
+🔍 **Searching for existing Obsidian vaults...**
+[Searches ~/Documents, ~/Desktop, iCloud Drive, home directory, and parent directories]
 
 ### Case 1: Single Vault Found
 
@@ -456,6 +484,26 @@ User: yes
 
 Great! I'll import your vault to OLD_VAULT/ where it will be safely preserved.
 You can migrate files to the PARA folders at your own pace.
+
+### Case 3: No Vaults Found (iCloud Check)
+
+🔍 **No Obsidian vaults found in common locations.**
+
+Is your vault stored in iCloud Drive? (yes/no)
+
+User: yes
+
+Please enter the full path to your vault:
+(Example: ~/Library/Mobile Documents/iCloud~md~obsidian/Documents/YourVault)
+
+User: ~/Library/Mobile Documents/iCloud~md~obsidian/Documents/MyVault
+
+[Validates path and shows vault stats]
+
+Found vault at: ~/Library/Mobile Documents/iCloud~md~obsidian/Documents/MyVault
+📊 Vault stats: 1,248 markdown files, 523MB total size
+
+Would you like to import this vault? (yes/skip)
 
 📦 **Analyzing your vault structure...** [Running tree to see folder hierarchy]
 [Sampling notes to understand content] [Detecting naming patterns from recent
