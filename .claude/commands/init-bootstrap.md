@@ -54,7 +54,8 @@ Then generate a customized CLAUDE.md file tailored to their needs.
    - Check these paths with appropriate depth limits:
      - `~/Documents` (maxdepth 3)
      - `~/Desktop` (maxdepth 3)
-     - `~/Library/Mobile Documents/iCloud~md~obsidian/Documents` (maxdepth 5 - iCloud vaults)
+     - `~/Library/Mobile Documents/iCloud~md~obsidian/Documents` (maxdepth 5 -
+       iCloud vaults)
      - Home directory `~/` (maxdepth 2)
      - Current directory parent (maxdepth 2)
    - If found, ask: "Found Obsidian vault at [path]. Is this the vault you want
@@ -71,8 +72,10 @@ Then generate a customized CLAUDE.md file tailored to their needs.
      - Detect if using PARA, Zettelkasten, Johnny Decimal, or custom
    - If not the right one or none found:
      - Ask: "Is your vault stored in iCloud Drive? (yes/no)"
-     - If yes: "Please enter the full path to your vault (e.g., ~/Library/Mobile Documents/iCloud~md~obsidian/Documents/YourVault)"
-     - If no: "Please enter the path to your existing vault, or type 'skip' to start fresh"
+     - If yes: "Please enter the full path to your vault (e.g., ~/Library/Mobile
+       Documents/iCloud~md~obsidian/Documents/YourVault)"
+     - If no: "Please enter the path to your existing vault, or type 'skip' to
+       start fresh"
    - If no existing vault or user skips, they're starting fresh
 
 4. **Ask Configuration Questions**
@@ -373,6 +376,7 @@ find ~ -maxdepth 2 -type d -name ".obsidian" 2>/dev/null
 ```
 
 The iCloud path requires:
+
 - Higher maxdepth (5) due to nested folder structure
 - Escaped spaces in path name
 - Silent error handling (2>/dev/null) as many users won't have iCloud
@@ -435,8 +439,8 @@ First-run marker removed
 
 Now let me ask you a few questions to customize your setup:
 
-🔍 **Searching for existing Obsidian vaults...**
-[Searches ~/Documents, ~/Desktop, iCloud Drive, home directory, and parent directories]
+🔍 **Searching for existing Obsidian vaults...** [Searches ~/Documents,
+~/Desktop, iCloud Drive, home directory, and parent directories]
 
 ### Case 1: Single Vault Found
 
@@ -493,8 +497,8 @@ Is your vault stored in iCloud Drive? (yes/no)
 
 User: yes
 
-Please enter the full path to your vault:
-(Example: ~/Library/Mobile Documents/iCloud~md~obsidian/Documents/YourVault)
+Please enter the full path to your vault: (Example: ~/Library/Mobile
+Documents/iCloud~md~obsidian/Documents/YourVault)
 
 User: ~/Library/Mobile Documents/iCloud~md~obsidian/Documents/MyVault
 
