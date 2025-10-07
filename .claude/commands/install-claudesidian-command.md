@@ -121,33 +121,102 @@ echo "📝 Config file: $CONFIG_FILE"
    ESCAPED_PATH="${ESCAPED_PATH//\\/\\\\}"
    ```
 4. **Check if already installed**: Search config file for existing
-   `claudesidian` alias
-5. **Create backup**: Before modifying, create timestamped backup of config file
+   `claudesidian` alias/function
+   ```bash
+   # Check for existing alias/function
+   if grep -q "alias claudesidian\|function claudesidian" "$CONFIG_FILE"; then
+     echo "⚠️  Found existing claudesidian command:"
+     grep -A 3 "claudesidian" "$CONFIG_FILE"
+     echo ""
+     read -p "Replace it? (yes/no): " replace_answer
+     if [[ ! "$replace_answer" =~ ^[Yy] ]]; then
+       echo "Installation cancelled. Existing command preserved."
+       exit 0
+     fi
+     # Mark for replacement (will remove before adding new one)
+     REPLACING=true
+   fi
+   ```
+5. **Get user confirmation**: Show what will be added and get final confirmation
+6. **Create backup**: Only if proceeding with modification
    ```bash
    # Create backup with timestamp
    BACKUP_FILE="$CONFIG_FILE.backup-$(date +%Y%m%d-%H%M%S)"
    cp "$CONFIG_FILE" "$BACKUP_FILE"
    echo "💾 Backup created: $BACKUP_FILE"
    ```
-6. **Add alias**: Append to config file if not present, using double-quoted path
-7. **Show success message**: With instructions to reload shell
+7. **Build the safe alias/function command**: Use the escaped path from step 3
+   ```bash
+   # CRITICAL: Use $ESCAPED_PATH in the command (not raw $VAULT_PATH)
+   if [ "$SHELL_TYPE" = "fish" ]; then
+     # Fish uses function syntax, not alias
+     COMMAND_TEXT="function claudesidian
+    cd \"$ESCAPED_PATH\" && (claude --resume 2>/dev/null; or claude)
+    cd -
+   end"
+   else
+     # Bash/Zsh use alias syntax
+     # IMPORTANT: Use double quotes around $ESCAPED_PATH to preserve escaping
+     COMMAND_TEXT="alias claudesidian='(cd \"$ESCAPED_PATH\" && (claude --resume 2>/dev/null || claude))'"
+   fi
+   ```
+8. **Remove old command if replacing**:
+   ```bash
+   if [ "$REPLACING" = true ]; then
+     # Remove old alias/function before adding new one
+     sed -i.tmp '/alias claudesidian\|function claudesidian/,/^end$/d' "$CONFIG_FILE"
+     rm -f "$CONFIG_FILE.tmp"
+   fi
+   ```
+9. **Add command to config file**: Append using the escaped command text
+   ```bash
+   echo "$COMMAND_TEXT" >> "$CONFIG_FILE"
+   ```
+10. **Show success message**: With instructions to reload shell
 
 ## Example Output
+
+**Bash/Zsh Example (with spaces in path to demonstrate escaping):**
 
 ```
 🔧 Installing claudesidian command...
 
-📁 Vault path: /home/user/my-vault
+📁 Vault path: /home/user/My Obsidian Vault
 🐚 Shell detected: zsh
 📝 Config file: /home/user/.zshrc
 
 💾 Backup created: /home/user/.zshrc.backup-20250107-143025
 
 ✅ Installed! Added to /home/user/.zshrc:
-   alias claudesidian='(cd "/home/user/my-vault" && (claude --resume 2>/dev/null || claude))'
+   alias claudesidian='(cd "/home/user/My Obsidian Vault" && (claude --resume 2>/dev/null || claude))'
 
 🔄 To activate, run:
    source ~/.zshrc
+
+   Or start a new terminal session.
+
+✨ Test it: Type 'claudesidian' from any directory!
+```
+
+**Fish Shell Example:**
+
+```
+🔧 Installing claudesidian command...
+
+📁 Vault path: /home/user/My Obsidian Vault
+🐚 Shell detected: fish
+📝 Config file: /home/user/.config/fish/config.fish
+
+💾 Backup created: /home/user/.config/fish/config.fish.backup-20250107-143025
+
+✅ Installed! Added to /home/user/.config/fish/config.fish:
+   function claudesidian
+    cd "/home/user/My Obsidian Vault" && (claude --resume 2>/dev/null; or claude)
+    cd -
+end
+
+🔄 To activate, run:
+   source ~/.config/fish/config.fish
 
    Or start a new terminal session.
 
@@ -164,18 +233,59 @@ The implementation properly handles paths with:
 
 Paths are double-quoted and any embedded quotes/backslashes are escaped.
 
+## Fish Shell Support
+
+Fish shell uses different syntax than Bash/Zsh:
+
+**Bash/Zsh (alias):**
+
+```bash
+alias claudesidian='(cd "/path" && command)'
+```
+
+**Fish (function):**
+
+```fish
+function claudesidian
+    cd "/path" && (command; or fallback)
+    cd -
+end
+```
+
+Key differences:
+
+- Fish uses `function` keyword instead of `alias` for complex commands
+- Fish uses `; or` instead of `||` for fallback logic
+- Fish uses `cd -` to return to previous directory (instead of subshell)
+- Multi-line function definition instead of single-line alias
+
+The installation automatically detects Fish and uses the correct syntax.
+
+## Security Considerations
+
+This command modifies your shell configuration file (a sensitive operation).
+Safety measures:
+
+- **You'll see exactly what will be added** before any changes
+- **Timestamped backup is automatically created** before modification
+- **Vault path is properly escaped** to prevent injection attacks
+- **Only the claudesidian command is modified** - nothing else in your config
+- **Asks permission** before replacing existing commands
+
+If anything goes wrong, restore from: `$CONFIG_FILE.backup-YYYYMMDD-HHMMSS`
+
 ## Important Notes
 
-- The command uses a subshell `()` so it returns to your original directory
-  after
+- The command uses a subshell `()` (or `cd -` in Fish) so it returns to your
+  original directory after
 - Automatically tries to resume existing sessions, falls back to new session
-- If alias already exists, ask user if they want to replace it
-- Always show what will be added before modifying config files
-- **Always create timestamped backup** of config file before modifying (format:
+- If alias/function already exists, asks user if they want to replace it
+- Always shows what will be added before modifying config files
+- **Always creates timestamped backup** of config file before modifying (format:
   `YYYYMMDD-HHMMSS`)
 - Backups are kept indefinitely - users can manually clean up old backups if
   needed
-- Show backup location so users know where to restore from if needed
+- Shows backup location so users know where to restore from if needed
 
 ## Usage Examples
 
@@ -201,7 +311,7 @@ Install for specific shell (override auto-detection):
 
 ## How It Works
 
-The alias uses a clever pattern:
+**Bash/Zsh (alias with subshell):**
 
 ```bash
 alias claudesidian='(cd "/path/to/vault" && (claude --resume 2>/dev/null || claude))'
@@ -212,4 +322,22 @@ alias claudesidian='(cd "/path/to/vault" && (claude --resume 2>/dev/null || clau
 2. `claude --resume 2>/dev/null` - Tries to resume existing session, suppresses
    error
 3. `|| claude` - If resume fails (no session), starts new session
-4. After Claude exits, returns to original directory automatically
+4. After Claude exits, subshell closes and returns to original directory
+   automatically
+
+**Fish (function with cd -):**
+
+```fish
+function claudesidian
+    cd "/path/to/vault" && (claude --resume 2>/dev/null; or claude)
+    cd -
+end
+```
+
+1. `cd "/path/to/vault"` - Changes to vault directory (path is double-quoted for
+   safety)
+2. `claude --resume 2>/dev/null` - Tries to resume existing session, suppresses
+   error
+3. `; or claude` - If resume fails (no session), starts new session (Fish
+   syntax)
+4. `cd -` - Returns to previous directory after Claude exits
