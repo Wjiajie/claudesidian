@@ -51,7 +51,13 @@ Then generate a customized CLAUDE.md file tailored to their needs.
 
 3. **Gather Vault Information**
    - Search common locations for existing Obsidian vaults (.obsidian folder)
-   - Check: ~/Documents, ~/Desktop, home directory, current directory parent
+   - Check these paths with appropriate depth limits:
+     - `~/Documents` (maxdepth 3) - all platforms
+     - `~/Desktop` (maxdepth 3) - all platforms
+     - `~/Library/Mobile Documents/iCloud~md~obsidian/Documents` (maxdepth 5 -
+       **macOS only**, iCloud vaults)
+     - Home directory `~/` (maxdepth 2) - all platforms
+     - Current directory parent (maxdepth 2) - all platforms
    - If found, ask: "Found Obsidian vault at [path]. Is this the vault you want
      to import?"
    - Count files correctly: `find [path] -type f -name "*.md" | wc -l` (no depth
@@ -64,8 +70,15 @@ Then generate a customized CLAUDE.md file tailored to their needs.
      - Check for daily notes folder and format
      - Identify most active folders by file count
      - Detect if using PARA, Zettelkasten, Johnny Decimal, or custom
-   - If not the right one or none found, ask for path to existing vault
-   - If no existing vault, they're starting fresh
+   - If not the right one or none found:
+     - **On macOS only:** Ask: "Is your vault stored in iCloud Drive? (yes/no)"
+     - If yes (macOS): "Please enter the full path to your vault (e.g.,
+       ~/Library/Mobile Documents/iCloud~md~obsidian/Documents/YourVault)"
+     - If no, or on Linux/Windows: "Please enter the path to your existing
+       vault, or type 'skip' to start fresh"
+     - **Validate user-provided paths** (see "User Path Validation" section
+       below)
+   - If no existing vault or user skips, they're starting fresh
 
 4. **Ask Configuration Questions**
    - "What's your name?" (for personalization)
@@ -349,6 +362,185 @@ If the user's response is unclear:
 - Example: "I want to make sure I import the right vault. Please type the number
   of your choice (1, 2, or 3)."
 
+### Platform Compatibility
+
+This command is designed to work across Linux, macOS, and Windows (WSL/Git
+Bash), with platform-specific features:
+
+**All Platforms:**
+
+- Search ~/Documents, ~/Desktop, home directory
+- Standard Obsidian vault detection
+- Full vault import and setup
+
+**macOS Only:**
+
+- iCloud Drive vault detection and import
+- Obsidian's iCloud sync is macOS-only, so iCloud features are disabled on other
+  platforms
+
+**Platform Detection:**
+
+```bash
+# Check platform
+if [[ "$OSTYPE" == "darwin"* ]]; then
+  # macOS - enable iCloud features
+  PLATFORM="macOS"
+  ICLOUD_SUPPORTED=true
+elif [[ "$OSTYPE" == "linux-gnu"* ]]; then
+  # Linux
+  PLATFORM="Linux"
+  ICLOUD_SUPPORTED=false
+elif [[ "$OSTYPE" == "msys" || "$OSTYPE" == "cygwin" ]]; then
+  # Windows (Git Bash or WSL)
+  PLATFORM="Windows"
+  ICLOUD_SUPPORTED=false
+fi
+```
+
+### iCloud Vault Search Implementation
+
+When searching for vaults, use this find command pattern:
+
+```bash
+# Standard locations (shallow search)
+# Note: 2>/dev/null suppresses expected permission errors from system directories
+# If no vaults are found, we'll ask the user for their vault path
+find ~/Documents ~/Desktop -maxdepth 3 -type d -name ".obsidian" 2>/dev/null
+
+# iCloud location (deeper search needed due to nested structure)
+# Only search on macOS
+if [[ "$OSTYPE" == "darwin"* ]]; then
+  find ~/Library/Mobile\ Documents/iCloud~md~obsidian/Documents -maxdepth 5 -type d -name ".obsidian" 2>/dev/null
+fi
+
+# Home directory (shallow to avoid deep recursion)
+find ~ -maxdepth 2 -type d -name ".obsidian" 2>/dev/null
+```
+
+The iCloud path requires:
+
+- Higher maxdepth (5) due to nested folder structure
+- Escaped spaces in path name
+- Silent error handling (2>/dev/null) as many users won't have iCloud
+- Platform check (macOS only)
+
+**Error Handling Note:** Permission errors are suppressed (2>/dev/null) because
+they're expected when searching system directories. If no vaults are found, the
+script gracefully prompts the user for their vault path.
+
+### User Path Validation
+
+When users manually provide a vault path, validate it thoroughly with helpful
+error messages:
+
+```bash
+# User provided path
+USER_PATH="$1"
+
+# Expand tilde and resolve to absolute path
+USER_PATH="${USER_PATH/#\~/$HOME}"
+REAL_PATH=$(realpath "$USER_PATH" 2>/dev/null)
+
+# Validation 1: Path exists
+if [ -z "$REAL_PATH" ]; then
+  echo "❌ Error: Path does not exist: $USER_PATH"
+  echo ""
+  echo "💡 Suggestions:"
+  echo "   • Check for typos in the path"
+  echo "   • Make sure you're using the full path (e.g., /Users/name/vault)"
+  echo "   • You can use ~ for your home directory (e.g., ~/Documents/vault)"
+  exit 1
+fi
+
+# Validation 2: Is a directory
+if [ ! -d "$REAL_PATH" ]; then
+  echo "❌ Error: Not a directory: $REAL_PATH"
+  echo ""
+  echo "💡 The path exists but points to a file, not a folder."
+  exit 1
+fi
+
+# Validation 3: Contains .obsidian folder
+if [ ! -d "$REAL_PATH/.obsidian" ]; then
+  echo "❌ Error: Not a valid Obsidian vault (no .obsidian folder)"
+  echo "   Looking in: $REAL_PATH"
+  echo ""
+  echo "💡 Suggestions:"
+  echo "   • Make sure the path points to your vault root (not a subfolder)"
+  echo "   • Check that you've opened this vault in Obsidian at least once"
+  echo "   • Try the path without trailing slash"
+  echo "   • For iCloud: ~/Library/Mobile Documents/iCloud~md~obsidian/Documents/YourVault"
+  exit 1
+fi
+
+# Validation 4: Readable permissions
+if [ ! -r "$REAL_PATH/.obsidian" ]; then
+  echo "❌ Error: Cannot read vault directory (permission denied)"
+  echo "   Path: $REAL_PATH"
+  echo ""
+  echo "💡 You may need to:"
+  echo "   • Check file permissions with: ls -la \"$REAL_PATH\""
+  echo "   • Make sure you own this directory"
+  exit 1
+fi
+
+# Show resolved path if different from input
+if [ "$USER_PATH" != "$REAL_PATH" ]; then
+  echo "✓ Resolved path: $REAL_PATH"
+fi
+
+# Valid vault path
+VAULT_PATH="$REAL_PATH"
+echo "✓ Valid Obsidian vault found"
+```
+
+This validation:
+
+- Expands `~` to home directory properly
+- Resolves symlinks and relative paths to absolute paths
+- Checks all essential requirements (exists, is directory, has .obsidian,
+  readable)
+- Provides helpful, actionable error messages with suggestions
+- Shows the resolved path so users understand what's being checked
+- Trusts users (allows symlinks, paths outside home directory)
+- Cross-platform compatible (works on Linux, macOS, Windows/WSL)
+
+### iCloud Sync State Checking
+
+When a user selects an iCloud vault, check sync state and warn if needed:
+
+```bash
+# After user confirms vault selection
+if [[ "$OSTYPE" == "darwin"* ]] && [[ "$vault_path" == *"iCloud"* ]]; then
+  # Check for common iCloud sync indicators
+  if [ -f "$vault_path/.icloud" ] || [ -f "$vault_path/.obsidian/.icloud" ]; then
+    echo ""
+    echo "📱 iCloud Sync Notice:"
+    echo "   This vault appears to be still downloading from iCloud."
+    echo "   For best results, open it in Obsidian first to ensure files are synced."
+    echo ""
+    read -p "Continue anyway? (yes/no): " sync_answer
+    if [[ ! "$sync_answer" =~ ^[Yy] ]]; then
+      echo "No problem! Open the vault in Obsidian, then re-run /init-bootstrap"
+      exit 0
+    fi
+  else
+    echo ""
+    echo "📱 iCloud vault detected. If import seems incomplete, make sure sync is complete."
+    echo ""
+  fi
+fi
+```
+
+This provides a soft warning that:
+
+- Only runs on macOS for iCloud paths
+- Checks for placeholder files that indicate incomplete download
+- Asks for confirmation if sync issues detected
+- Gives gentle reminder even when no issues found
+- Lets users proceed if they choose
+
 ## Interactive Example
 
 ````
@@ -408,7 +600,8 @@ First-run marker removed
 Now let me ask you a few questions to customize your setup:
 
 🔍 **Searching for existing Obsidian vaults...** [Searches ~/Documents,
-~/Desktop, ~/, and parent directories]
+~/Desktop, home directory, and parent directories. On macOS, also searches
+iCloud Drive]
 
 ### Case 1: Single Vault Found
 
@@ -456,6 +649,39 @@ User: yes
 
 Great! I'll import your vault to OLD_VAULT/ where it will be safely preserved.
 You can migrate files to the PARA folders at your own pace.
+
+### Case 3: No Vaults Found (Platform-Aware)
+
+🔍 **No Obsidian vaults found in common locations.**
+
+**On macOS:** Is your vault stored in iCloud Drive? (yes/no)
+
+User: yes
+
+Please enter the full path to your vault: (Example: ~/Library/Mobile
+Documents/iCloud~md~obsidian/Documents/YourVault)
+
+User: ~/Library/Mobile Documents/iCloud~md~obsidian/Documents/MyVault
+
+[Validates path and shows vault stats]
+
+Found vault at: ~/Library/Mobile Documents/iCloud~md~obsidian/Documents/MyVault
+📊 Vault stats: 1,248 markdown files, 523MB total size
+
+Would you like to import this vault? (yes/skip)
+
+**On Linux/Windows:** Please enter the path to your existing Obsidian vault, or
+type 'skip' to start fresh: (Example: ~/Documents/MyVault or
+/home/user/obsidian-vault)
+
+User: ~/Documents/MyVault
+
+[Validates path and shows vault stats]
+
+Found vault at: ~/Documents/MyVault 📊 Vault stats: 1,248 markdown files, 523MB
+total size
+
+Would you like to import this vault? (yes/skip)
 
 📦 **Analyzing your vault structure...** [Running tree to see folder hierarchy]
 [Sampling notes to understand content] [Detecting naming patterns from recent

@@ -152,6 +152,8 @@ Pre-configured AI assistants ready to use:
 - `de-ai-ify` - Remove AI writing patterns from text
 - `upgrade` - Update to the latest claudesidian version
 - `init-bootstrap` - Re-run the setup wizard
+- `install-claudesidian-command` - Install shell command to launch vault from
+  anywhere
 
 Run with: `/[command-name]` in Claude Code
 
@@ -262,6 +264,34 @@ Run these with `pnpm`:
 - `vault:stats` - Show vault statistics
 
 ## Advanced Setup
+
+### Quick Launch from Anywhere
+
+Install a shell command to launch your vault from any directory:
+
+```bash
+# In Claude Code, run:
+/install-claudesidian-command
+```
+
+This creates a `claudesidian` alias that:
+
+- Changes to your vault directory automatically
+- Tries to resume your existing session (if one exists)
+- Falls back to starting a new session
+- Returns to your original directory when done
+
+**Usage:**
+
+```bash
+# From anywhere in your terminal:
+claudesidian
+
+# It will automatically resume your last session or start a new one
+```
+
+The command is added to your shell config (~/.zshrc, ~/.bashrc, etc.) so it
+persists across terminal sessions.
 
 ### Git Integration
 
