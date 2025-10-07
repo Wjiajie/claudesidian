@@ -100,14 +100,17 @@ echo "📝 Config file: $CONFIG_FILE"
 ```
 
 **Key improvements:**
-- Uses `$SHELL` to detect default shell (not `$ZSH_VERSION`/`$BASH_VERSION` which detect current session)
+
+- Uses `$SHELL` to detect default shell (not `$ZSH_VERSION`/`$BASH_VERSION`
+  which detect current session)
 - Supports command-line argument to override auto-detection
 - Shows detected shell and config file for transparency
 - Validates shell type and provides clear error message for unsupported shells
 
 ## Installation Steps
 
-1. **Detect shell**: Use argument if provided, otherwise auto-detect from `$SHELL`
+1. **Detect shell**: Use argument if provided, otherwise auto-detect from
+   `$SHELL`
 2. **Get vault path**: Use `pwd` to get current directory
 3. **Escape the path**: Properly escape quotes and special characters for shell
    safety
@@ -154,6 +157,7 @@ echo "📝 Config file: $CONFIG_FILE"
 ## Handling Special Characters
 
 The implementation properly handles paths with:
+
 - Spaces: `/Users/noah/My Vault`
 - Quotes: `/Users/noah/vault's backup`
 - Special characters that need escaping
@@ -190,6 +194,7 @@ Install for specific shell (override auto-detection):
 ```
 
 **When to specify shell:**
+
 - You use multiple shells and want to install for a specific one
 - Auto-detection picked the wrong shell
 - You're setting up for someone else
