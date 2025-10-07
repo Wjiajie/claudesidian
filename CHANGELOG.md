@@ -8,6 +8,35 @@ and this project adheres to
 
 ## [Unreleased]
 
+## [0.13.0] - 2025-01-17
+
+### Added
+
+- New `/install-claudesidian-command` for creating shell alias/function to launch
+  vault from anywhere
+- iCloud Drive vault detection and import support in `/init-bootstrap` (macOS
+  only)
+- Fish shell support for launcher command with proper function syntax
+- Comprehensive user input path validation with helpful error messages
+- Platform detection for cross-platform compatibility (Linux, macOS, Windows)
+
+### Fixed
+
+- Critical shell injection vulnerability in launcher command with proper path
+  escaping
+- Backup creation before modifying shell configuration files
+- iCloud sync state checking with soft warnings for incomplete downloads
+- Shell detection now uses default shell instead of current session shell
+- Existing alias/function replacement with user confirmation
+- Improved error handling documentation with explanations
+
+### Security
+
+- Path escaping for vault paths with spaces, quotes, and special characters
+- Timestamped backups before modifying shell configs
+- Input validation for user-provided vault paths
+- Security considerations section in documentation
+
 ## [0.12.1] - 2025-01-17
 
 ### Fixed
@@ -385,7 +414,8 @@ and this project adheres to
 - API keys stored in environment variables
 - .mcp.json gitignored for security
 
-[Unreleased]: https://github.com/heyitsnoah/claudesidian/compare/v0.12.1...HEAD
+[Unreleased]: https://github.com/heyitsnoah/claudesidian/compare/v0.13.0...HEAD
+[0.13.0]: https://github.com/heyitsnoah/claudesidian/compare/v0.12.1...v0.13.0
 [0.12.1]: https://github.com/heyitsnoah/claudesidian/compare/v0.12.0...v0.12.1
 [0.12.0]: https://github.com/heyitsnoah/claudesidian/compare/v0.11.0...v0.12.0
 [0.11.0]: https://github.com/heyitsnoah/claudesidian/compare/v0.10.1...v0.11.0
