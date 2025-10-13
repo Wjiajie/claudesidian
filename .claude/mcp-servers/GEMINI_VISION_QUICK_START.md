@@ -145,7 +145,7 @@ After adding, you'll need to edit the `.mcp.json` file to add your API key:
 
 3. **Test with an actual command**:
    ```
-   Use gemini-vision to extract text from 05 Attachments/[any-image.png]
+   Use gemini-vision to extract text from 05_Attachments/[any-image.png]
    ```
 
 ## Troubleshooting
@@ -230,7 +230,7 @@ After adding, you'll need to edit the `.mcp.json` file to add your API key:
 
 2. **Check file paths**:
    - Use absolute paths from vault root
-   - Example: `05 Attachments/image.png` not `./05 Attachments/image.png`
+   - Example: `05_Attachments/image.png` not `./05_Attachments/image.png`
 
 ## Available Tools
 
@@ -240,10 +240,10 @@ Once working, you can use these in Claude:
 
 ```
 # Analyze an image
-Use gemini-vision to analyze 05 Attachments/screenshot.png
+Use gemini-vision to analyze 05_Attachments/screenshot.png
 
 # Extract text (OCR)
-Use gemini-vision to extract text from 05 Attachments/document.jpg
+Use gemini-vision to extract text from 05_Attachments/document.jpg
 
 # Compare images
 Use gemini-vision to compare image1.png and image2.png
@@ -259,7 +259,7 @@ Use gemini-vision to analyze multiple: image1.png, image2.png, image3.png
 
 ```
 # Analyze a local video file
-Use gemini-vision to analyze video 05 Attachments/video.mp4
+Use gemini-vision to analyze video 05_Attachments/video.mp4
 
 # Analyze a YouTube video
 Use gemini-vision to analyze YouTube video https://www.youtube.com/watch?v=VIDEO_ID
@@ -298,9 +298,7 @@ Then open a new Claude window and test.
 
 - **Server code**: `.claude/mcp-servers/gemini-vision.mjs`
 - **Dependencies**: `package.json`
-- **This guide**: `07 Readme/GEMINI_VISION_QUICK_START.md`
-- **Detailed docs**: `07 Readme/GEMINI_VISION_INSTALLATION.md`
-- **Development guide**: `07 Readme/MCP_DEVELOPMENT_GUIDE.md`
+- **This guide**: `.claude/mcp-servers/GEMINI_VISION_QUICK_START.md`
 
 ## Need Help?
 

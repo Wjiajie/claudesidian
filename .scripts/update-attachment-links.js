@@ -11,7 +11,7 @@
 import fs from 'node:fs'
 import path from 'node:path'
 
-const organizedDir = '05 Attachments/Organized'
+const organizedDir = '05_Attachments/Organized'
 const args = process.argv.slice(2)
 const specificFile = args[0]
 
@@ -69,24 +69,24 @@ walkDir('.', (filepath) => {
       const pattern1 = new RegExp(`!\\[\\[${escapedFile}\\]\\]`, 'g')
       content = content.replace(
         pattern1,
-        `![[05 Attachments/Organized/${filename}]]`,
+        `![[05_Attachments/Organized/${filename}]]`,
       )
 
-      // Pattern 2: ![[05 Attachments/filename]] (file in root being moved)
+      // Pattern 2: ![[05_Attachments/filename]] (file in root being moved)
       const pattern2 = new RegExp(
-        `!\\[\\[05 Attachments/${escapedFile}\\]\\]`,
+        `!\\[\\[05_Attachments/${escapedFile}\\]\\]`,
         'g',
       )
       content = content.replace(
         pattern2,
-        `![[05 Attachments/Organized/${filename}]]`,
+        `![[05_Attachments/Organized/${filename}]]`,
       )
 
       // Pattern 3: [[filename]] without ! (for PDFs and other non-embedded links)
       // Only if not already pointing to Organized
       const pattern3 = new RegExp(`\\[\\[${escapedFile}\\]\\]`, 'g')
       const pattern3Organized = new RegExp(
-        `\\[\\[05 Attachments/Organized/${escapedFile}\\]\\]`,
+        `\\[\\[05_Attachments/Organized/${escapedFile}\\]\\]`,
         'g',
       )
 
@@ -94,18 +94,18 @@ walkDir('.', (filepath) => {
       if (!pattern3Organized.test(content)) {
         content = content.replace(
           pattern3,
-          `[[05 Attachments/Organized/${filename}]]`,
+          `[[05_Attachments/Organized/${filename}]]`,
         )
       }
 
-      // Pattern 4: [[05 Attachments/filename]] without !
+      // Pattern 4: [[05_Attachments/filename]] without !
       const pattern4 = new RegExp(
-        `\\[\\[05 Attachments/${escapedFile}\\]\\]`,
+        `\\[\\[05_Attachments/${escapedFile}\\]\\]`,
         'g',
       )
       content = content.replace(
         pattern4,
-        `[[05 Attachments/Organized/${filename}]]`,
+        `[[05_Attachments/Organized/${filename}]]`,
       )
     })
 
