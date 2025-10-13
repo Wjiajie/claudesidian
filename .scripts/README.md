@@ -30,8 +30,13 @@ Scrapes multiple URLs and auto-generates filenames.
 
 ```bash
 # Requires FIRECRAWL_API_KEY environment variable
+
+# Basic usage - saves to 00_Inbox/Clippings/
 .scripts/firecrawl-batch.sh <url1> <url2> <url3>
-# Files saved to 00_Inbox/Clippings/
+
+# Custom output directory
+.scripts/firecrawl-batch.sh -o 01_Projects/Research/ <url1> <url2>
+.scripts/firecrawl-batch.sh --output-dir 03_Resources/Articles/ <url1> <url2>
 ```
 
 ### Transcript Extraction
@@ -41,7 +46,11 @@ Scrapes multiple URLs and auto-generates filenames.
 Extracts transcripts from YouTube videos.
 
 ```bash
+# Basic usage - saves to 00_Inbox/Clippings/
 .scripts/transcript-extract.sh <youtube-url>
+
+# Custom output directory
+.scripts/transcript-extract.sh <youtube-url> 01_Projects/Research/
 ```
 
 ## NPM Scripts

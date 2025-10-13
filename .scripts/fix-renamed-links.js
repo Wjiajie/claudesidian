@@ -23,7 +23,7 @@ if (args.length !== 2) {
 }
 
 const [oldName, newName] = args
-const newPath = `05 Attachments/Organized/${newName}`
+const newPath = `05_Attachments/Organized/${newName}`
 
 console.log(`Fixing links: ${oldName} → ${newName}`)
 
@@ -59,9 +59,9 @@ walkDir('.', (filepath) => {
     const pattern1 = new RegExp(`!\\[\\[${escapedOld}\\]\\]`, 'g')
     content = content.replace(pattern1, `![[${newPath}]]`)
 
-    // Pattern 2: ![[05 Attachments/oldname]]
+    // Pattern 2: ![[05_Attachments/oldname]]
     const pattern2 = new RegExp(
-      `!\\[\\[05 Attachments/${escapedOld}\\]\\]`,
+      `!\\[\\[05_Attachments/${escapedOld}\\]\\]`,
       'g',
     )
     content = content.replace(pattern2, `![[${newPath}]]`)
@@ -70,9 +70,9 @@ walkDir('.', (filepath) => {
     const pattern3 = new RegExp(`(?<!!)\\[\\[${escapedOld}\\]\\]`, 'g')
     content = content.replace(pattern3, `[[${newPath}]]`)
 
-    // Pattern 4: [[05 Attachments/oldname]] without !
+    // Pattern 4: [[05_Attachments/oldname]] without !
     const pattern4 = new RegExp(
-      `(?<!!)\\[\\[05 Attachments/${escapedOld}\\]\\]`,
+      `(?<!!)\\[\\[05_Attachments/${escapedOld}\\]\\]`,
       'g',
     )
     content = content.replace(pattern4, `[[${newPath}]]`)

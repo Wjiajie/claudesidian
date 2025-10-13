@@ -1,16 +1,34 @@
 #!/bin/bash
 
 # Firecrawl batch scraper script
-# Usage: ./firecrawl-batch.sh <url1> <url2> ... 
+# Usage: ./firecrawl-batch.sh [-o|--output-dir <dir>] <url1> <url2> ...
 # Automatically generates filenames based on page titles and dates
 # Requires: FIRECRAWL_API_KEY environment variable
 
-# Source .zshrc to get the API key
-source ~/.zshrc
+# Default output directory
+OUTPUT_DIR="00_Inbox/Clippings/"
+URLS=()
 
-if [ $# -eq 0 ]; then
-    echo "Usage: $0 <url1> <url2> ..."
-    echo "Scrapes multiple URLs and saves them to 00 Inbox/Clippings/"
+# Parse arguments
+while [[ $# -gt 0 ]]; do
+    case $1 in
+        -o|--output-dir)
+            OUTPUT_DIR="$2"
+            shift 2
+            ;;
+        *)
+            URLS+=("$1")
+            shift
+            ;;
+    esac
+done
+
+if [ ${#URLS[@]} -eq 0 ]; then
+    echo "Usage: $0 [-o|--output-dir <dir>] <url1> <url2> ..."
+    echo "Default output directory: 00_Inbox/Clippings/"
+    echo ""
+    echo "Options:"
+    echo "  -o, --output-dir <dir>  Specify custom output directory"
     exit 1
 fi
 
@@ -21,7 +39,7 @@ fi
 
 # Get today's date
 TODAY=$(date +"%Y-%m-%d")
-CLIPPINGS_DIR="00 Inbox/Clippings"
+CLIPPINGS_DIR="$OUTPUT_DIR"
 
 # Create clippings directory if it doesn't exist
 mkdir -p "$CLIPPINGS_DIR"
@@ -41,7 +59,7 @@ SUCCESS_COUNT=0
 FAIL_COUNT=0
 
 # Process each URL
-for URL in "$@"; do
+for URL in "${URLS[@]}"; do
     echo "Processing: $URL"
     
     # Make the API call and save to temp file

@@ -12,8 +12,8 @@ and this project adheres to
 
 ### Added
 
-- New `/install-claudesidian-command` for creating shell alias/function to launch
-  vault from anywhere
+- New `/install-claudesidian-command` for creating shell alias/function to
+  launch vault from anywhere
 - iCloud Drive vault detection and import support in `/init-bootstrap` (macOS
   only)
 - Fish shell support for launcher command with proper function syntax
