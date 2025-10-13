@@ -8,6 +8,24 @@ and this project adheres to
 
 ## [Unreleased]
 
+## [0.13.1] - 2025-10-13
+
+### Fixed
+
+- Corrected hardcoded folder paths to use underscores instead of spaces
+  - Fixed `transcript-extract.sh`: `00 Inbox/Clippings` → `00_Inbox/Clippings/`
+  - Fixed `firecrawl-batch.sh`: `00 Inbox/Clippings` → `00_Inbox/Clippings/`
+  - Fixed `update-attachment-links.js`: `05 Attachments` → `05_Attachments`
+  - Fixed `fix-renamed-links.js`: `05 Attachments` → `05_Attachments`
+  - Fixed example paths in `GEMINI_VISION_QUICK_START.md`
+- Removed security risk in `firecrawl-batch.sh` by eliminating `source ~/.zshrc`
+- Corrected non-existent file references in Gemini Vision documentation
+
+### Added
+
+- Custom output directory flag (`-o|--output-dir`) for `firecrawl-batch.sh`
+- Documentation for new output directory options in README.md
+
 ## [0.13.0] - 2025-01-17
 
 ### Added
@@ -414,7 +432,8 @@ and this project adheres to
 - API keys stored in environment variables
 - .mcp.json gitignored for security
 
-[Unreleased]: https://github.com/heyitsnoah/claudesidian/compare/v0.13.0...HEAD
+[Unreleased]: https://github.com/heyitsnoah/claudesidian/compare/v0.13.1...HEAD
+[0.13.1]: https://github.com/heyitsnoah/claudesidian/compare/v0.13.0...v0.13.1
 [0.13.0]: https://github.com/heyitsnoah/claudesidian/compare/v0.12.1...v0.13.0
 [0.12.1]: https://github.com/heyitsnoah/claudesidian/compare/v0.12.0...v0.12.1
 [0.12.0]: https://github.com/heyitsnoah/claudesidian/compare/v0.11.0...v0.12.0
