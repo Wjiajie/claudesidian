@@ -1,0 +1,9 @@
+{
+  "id": "deerflow-integration",
+  "name": "DeerFlow 集成插件",
+  "version": "0.1.0",
+  "minAppVersion": "1.4.0",
+  "author": "Your Name",
+  "description": "集成DeerFlow智能研究助手的Obsidian插件，支持聊天交互、语音合成等功能",
+  "main": "main.js"
+}

@@ -1,0 +1,231 @@
+{
+  "main": {
+    "id": "ec89302eeb4e1541",
+    "type": "split",
+    "children": [
+      {
+        "id": "5ad95c39f4222e10",
+        "type": "tabs",
+        "children": [
+          {
+            "id": "e5807d7dc9689caa",
+            "type": "leaf",
+            "state": {
+              "type": "thino_view",
+              "state": {}
+            }
+          },
+          {
+            "id": "87b051738df067be",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "素材汇总/微信读书/且听风吟（村上春树成名作，连续畅销18年）-CB_63X0jD0fqAhV6q16opEuNFi1.md",
+                "mode": "preview",
+                "backlinks": true,
+                "source": false
+              }
+            }
+          }
+        ],
+        "currentTab": 1
+      },
+      {
+        "id": "fb8b9a7f4a07ee05",
+        "type": "tabs",
+        "children": [
+          {
+            "id": "02f9213ebe3a1d92",
+            "type": "leaf",
+            "state": {
+              "type": "localgraph",
+              "state": {
+                "file": "素材汇总/微信读书/且听风吟（村上春树成名作，连续畅销18年）-CB_63X0jD0fqAhV6q16opEuNFi1.md",
+                "options": {
+                  "collapse-filter": true,
+                  "search": "",
+                  "localJumps": 1,
+                  "localBacklinks": true,
+                  "localForelinks": true,
+                  "localInterlinks": false,
+                  "showTags": false,
+                  "showAttachments": false,
+                  "hideUnresolved": false,
+                  "collapse-color-groups": true,
+                  "colorGroups": [],
+                  "collapse-display": true,
+                  "showArrow": false,
+                  "textFadeMultiplier": 0,
+                  "nodeSizeMultiplier": 1,
+                  "lineSizeMultiplier": 1,
+                  "collapse-forces": true,
+                  "centerStrength": 0.518713248970312,
+                  "repelStrength": 10,
+                  "linkStrength": 1,
+                  "linkDistance": 250,
+                  "scale": 1,
+                  "close": false
+                }
+              }
+            }
+          }
+        ]
+      }
+    ],
+    "direction": "vertical"
+  },
+  "left": {
+    "id": "b11239f926a01e86",
+    "type": "mobile-drawer",
+    "children": [
+      {
+        "id": "7aa41d20fe41a696",
+        "type": "leaf",
+        "state": {
+          "type": "file-explorer",
+          "state": {
+            "sortOrder": "byModifiedTime"
+          }
+        }
+      },
+      {
+        "id": "42c02d649b1ea062",
+        "type": "leaf",
+        "state": {
+          "type": "search",
+          "state": {
+            "query": "",
+            "matchingCase": false,
+            "explainSearch": false,
+            "collapseAll": false,
+            "extraContext": false,
+            "sortOrder": "alphabetical"
+          }
+        }
+      },
+      {
+        "id": "a9caeae60a02f3db",
+        "type": "leaf",
+        "state": {
+          "type": "tag",
+          "state": {
+            "sortOrder": "frequency",
+            "useHierarchy": true
+          }
+        }
+      },
+      {
+        "id": "0ad13b9f8fa34e81",
+        "type": "leaf",
+        "state": {
+          "type": "bookmarks",
+          "state": {}
+        }
+      }
+    ],
+    "currentTab": 0
+  },
+  "right": {
+    "id": "4753257d369fafc5",
+    "type": "mobile-drawer",
+    "children": [
+      {
+        "id": "1bd04361387e009f",
+        "type": "leaf",
+        "state": {
+          "type": "backlink",
+          "state": {
+            "file": "素材汇总/微信读书/且听风吟（村上春树成名作，连续畅销18年）-CB_63X0jD0fqAhV6q16opEuNFi1.md",
+            "collapseAll": false,
+            "extraContext": false,
+            "sortOrder": "alphabetical",
+            "showSearch": false,
+            "searchQuery": "",
+            "backlinkCollapsed": false,
+            "unlinkedCollapsed": false
+          }
+        }
+      },
+      {
+        "id": "83eee312bc468502",
+        "type": "leaf",
+        "state": {
+          "type": "outgoing-link",
+          "state": {
+            "file": "素材汇总/微信读书/且听风吟（村上春树成名作，连续畅销18年）-CB_63X0jD0fqAhV6q16opEuNFi1.md",
+            "linksCollapsed": false,
+            "unlinkedCollapsed": true
+          }
+        }
+      },
+      {
+        "id": "f7deb6b3b4148908",
+        "type": "leaf",
+        "state": {
+          "type": "outline",
+          "state": {
+            "file": "素材汇总/微信读书/且听风吟（村上春树成名作，连续畅销18年）-CB_63X0jD0fqAhV6q16opEuNFi1.md"
+          }
+        }
+      }
+    ],
+    "currentTab": 0
+  },
+  "left-ribbon": {
+    "hiddenItems": {
+      "switcher:打开快速切换": false,
+      "canvas:新建白板": false,
+      "command-palette:打开命令面板": false,
+      "graph:查看关系图谱": false,
+      "daily-notes:打开/创建今天的日记": false,
+      "templates:插入模板": false,
+      "obsidian-memos:Thino": false,
+      "obsidian-omnivore:Omnivore": false,
+      "remotely-save:Remotely Save": false,
+      "obsidian-weread-plugin:同步微信读书笔记": false
+    }
+  },
+  "active": "7aa41d20fe41a696",
+  "lastOpenFiles": [
+    "素材汇总/微信读书/奔跑吧，程序员：从零开始打造产品、技术和团队-25016193.md",
+    "素材汇总/微信读书/且听风吟（村上春树成名作，连续畅销18年）-CB_63X0jD0fqAhV6q16opEuNFi1.md",
+    "素材汇总/微信读书/卡片笔记写作法：如何实现从阅读到写作（聪明人如何记笔记，高效记笔记）-CB_8bI2fo2fA8xj6pb6opFWG8UM.md",
+    "素材汇总/omnivore/2024-08-01/曼昆的6条工作原则.md",
+    "素材汇总/omnivore/2024-07-29/我做了一个 AI 搜索引擎 - 艾逗笔.md",
+    "配置文件/子主题索引文件/永久笔记/优秀外部资源收集.md",
+    "素材汇总/omnivore/2024-05-31/把阅读作为方法.md",
+    "素材汇总/Omnivore/2024-08-01/曼昆的6条工作原则.md",
+    "素材汇总/Omnivore/2024-08-01",
+    "素材汇总/Omnivore/2024-07-29/1024，我从腾讯裸辞了 - 艾逗笔.md",
+    "素材汇总/Omnivore/2024-07-29/AI一年，人间十年.md",
+    "素材汇总/Omnivore/2024-07-29/我做了一个 AI 搜索引擎 - 艾逗笔.md",
+    "素材汇总/Omnivore/2024-07-29",
+    "素材汇总/Omnivore/2024-06-19/摩根侯塞尔《你越幸运，你就应该努力变得更好》.md",
+    "素材汇总/Omnivore/2024-06-19",
+    "素材汇总/Omnivore/2024-06-17/摩根侯塞尔《阻力最小的心理路径》.md",
+    "素材汇总/Omnivore/2024-06-17",
+    "素材汇总/Omnivore/2024-06-04/YC的基本启动建议：YC启动库-Y Combinator --- YC's essential startup advice - YC Startup Library - Y Combinator.md",
+    "素材汇总/Omnivore/2024-06-04/卢曼卡片盒笔记法介绍 (Introduction to the Zettelkasten Method) • Zettelkasten Method.md",
+    "素材汇总/Omnivore/2024-06-04",
+    "素材汇总/Omnivore/2024-06-03/摩根侯塞尔《一张大网络：世界运行的几种方式》.md",
+    "素材汇总/Omnivore/2024-06-03",
+    "素材汇总/Omnivore/2024-06-01/摩根侯塞尔《恶性陷阱》.md",
+    "素材汇总/Omnivore/2024-06-01/摩根侯塞尔《注意力》.md",
+    "素材汇总/Omnivore/2024-06-01",
+    "素材汇总/Omnivore/2024-05-31/摩根侯塞尔《如何阅读：大量输入和强大的过滤器》.md",
+    "素材汇总/Omnivore/2024-05-31/把阅读作为方法.md",
+    "素材汇总/Omnivore/2024-05-31",
+    "素材汇总/Omnivore/2024-03-25/独立开发技术栈 2024.md",
+    "素材汇总/Omnivore/2024-03-25",
+    "素材汇总/omnivore",
+    "素材汇总/omnivore/2024-06-01/摩根侯塞尔《注意力》.md",
+    "闪念胶囊/2024-08-05.md",
+    "闪念胶囊/2024-08-07.md",
+    "闪念胶囊/2024-08-08.md",
+    "配置文件/子主题索引文件/原始素材/omnivore汇总.md",
+    "Screenshot_20240731_204832.jpg",
+    "Pasted Image 20240801094819.png",
+    "Untitled.canvas"
+  ]
+}

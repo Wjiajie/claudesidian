@@ -1,0 +1,58 @@
+/* 基础样式重置 */
+.deerflow-plugin * {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+/* 设置面板样式 */
+.deerflow-plugin .setting-item {
+    margin: 12px 0;
+    padding: 8px 0;
+    border-bottom: 1px solid var(--background-modifier-border);
+}
+
+.deerflow-plugin .setting-item:last-child {
+    border-bottom: none;
+}
+
+.deerflow-plugin .setting-name {
+    font-size: 14px;
+    font-weight: 600;
+    color: var(--text-normal);
+}
+
+.deerflow-plugin .setting-description {
+    font-size: 12px;
+    color: var(--text-muted);
+    margin-top: 4px;
+}
+
+/* 功能按钮样式 */
+.deerflow-ribbon-button {
+    transition: opacity 0.2s ease;
+}
+
+.deerflow-ribbon-button:hover {
+    opacity: 0.8;
+}
+
+/* 通知样式 */
+.deerflow-notice {
+    background: var(--interactive-accent);
+    color: var(--text-on-accent);
+    border-radius: 4px;
+    padding: 8px 12px;
+}
+
+/* 音频播放器样式 */
+.deerflow-audio {
+    margin: 12px 0;
+    width: 100%;
+}
+
+.deerflow-audio audio {
+    width: 100%;
+    background: var(--background-secondary);
+    border-radius: 8px;
+}

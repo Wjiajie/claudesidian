@@ -1,0 +1,33 @@
+{
+  "mobileToolbarCommands": [
+    "editor:undo",
+    "editor:redo",
+    "editor:insert-tag",
+    "editor:toggle-blockquote",
+    "editor:insert-wikilink",
+    "editor:insert-embed",
+    "editor:set-heading",
+    "editor:toggle-bullet-list",
+    "editor:toggle-numbered-list",
+    "editor:insert-link",
+    "editor:cycle-list-checklist",
+    "editor:toggle-bold",
+    "editor:toggle-italics",
+    "editor:toggle-strikethrough",
+    "editor:toggle-highlight",
+    "editor:toggle-code",
+    "editor:toggle-fold",
+    "editor:toggle-inline-math",
+    "editor:insert-mathblock",
+    "editor:insert-callout",
+    "editor:insert-codeblock",
+    "editor:insert-table",
+    "editor:attach-file",
+    "editor:fold-all",
+    "editor:unfold-all",
+    "editor:configure-toolbar"
+  ],
+  "mobilePullAction": "editor:save-file",
+  "alwaysUpdateLinks": true,
+  "promptDelete": false
+}

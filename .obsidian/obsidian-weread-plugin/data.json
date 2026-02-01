@@ -1,0 +1,65 @@
+{
+  "cookies": [
+    {
+      "name": "wr_fp",
+      "value": "3361778982"
+    },
+    {
+      "name": "wr_gid",
+      "value": "206514820"
+    },
+    {
+      "name": "wr_skey",
+      "value": "KbOEECQN"
+    },
+    {
+      "name": "wr_vid",
+      "value": "17901737"
+    },
+    {
+      "name": "wr_ql",
+      "value": "0"
+    },
+    {
+      "name": "wr_rt",
+      "value": "web@iiN3MBhFpbTi~fiS2Bf_AL"
+    },
+    {
+      "name": "wr_localvid",
+      "value": "50b32230711128a950ba83b"
+    },
+    {
+      "name": "wr_name",
+      "value": "jiajie"
+    },
+    {
+      "name": "wr_avatar",
+      "value": "https://res.weread.qq.com/wravatar/WV0023-sRit~dG7FQTAVlc2qxbvEbc/0"
+    },
+    {
+      "name": "wr_gender",
+      "value": "1"
+    }
+  ],
+  "noteLocation": "素材汇总/微信读书",
+  "dailyNotesLocation": "/",
+  "insertAfter": "<!-- start of weread -->",
+  "insertBefore": "<!-- end of weread -->",
+  "dailyNotesFormat": "YYYY-MM-DD",
+  "lastCookieTime": 1768492887595,
+  "isCookieValid": true,
+  "user": "jiajie",
+  "userVid": "17901737",
+  "template": "---\nisbn: {{metaData.isbn}}\ncategory: {{metaData.category}}\nlastReadDate: {{metaData.lastReadDate}}\nparent: \"[[微信读书索引]]\"\n---\n>[!rnb|noicon] \n># {{metaData.title}}\n>` {{metaData.author}}`\n\n>[!nb|noicon]\n>\n\n>[!weread1|noicon] \n> {{metaData.intro}}\n\n\n>[!weread2|noicon] [![cover|100]({{metaData.cover}})]({{metaData.cover}})\n> - 作者： {{metaData.author}}\n> - 出版时间： {{metaData.publishTime}}\n> - ISBN： {{metaData.isbn}}\n> - 分类： {{metaData.category}}\n> - 出版社： {{metaData.publisher}}\n> - 划线数量：{{metaData.noteCount}}\n> - 笔记数量： {{metaData.reviewCount}}\n\n>[!nb|noicon]\n>\n\n>[!rnb|noicon] \n>## 笔记\n\n\n>[!nb|noicon]\n>\n\n{% set allChapters = [] %}\n{% for highlight in chapterHighlights %}\n  {% if allChapters.indexOf(highlight.chapterTitle) == -1 %} \n    {% set allChapters = allChapters.concat(highlight.chapterTitle) %}  \n  {% endif %}\n{% endfor %}\n{% for chapterReview in bookReview.chapterReviews %}\n  {% if allChapters.indexOf(chapterReview.chapterTitle) == -1 %}\n    {% set allChapters = allChapters.concat(chapterReview.chapterTitle) %}\n  {% endif %} \n{% endfor %}\n{% for chapterTitle in allChapters %}\n### {{ chapterTitle }}\n\n{% for highlightItem in chapterHighlights %}\n{% if highlightItem.chapterTitle == chapterTitle  %}\n###### 高亮\n{% for highlight in highlightItem.highlights %}\n>[!weread4] {{ highlight.markText | trim }}\n >- {{highlight.createTime}}\n >{{ '---' }}\n{% endfor %}\n{% endif %}\n{% endfor %}\n\n{% for chapterReview in bookReview.chapterReviews %}\n{% if chapterReview.chapterTitle == chapterTitle %}\n###### 评论\n{% for review in chapterReview.reviews %}\n >[!weread3] {{ review.abstract | trim }} \n > - {{ review.content }}\n > - {{review.createTime}}\n >{{ '---' }}\n{% endfor %}\n{% endif %}\n{% endfor %}\n{% endfor %}\n",
+  "noteCountLimit": -1,
+  "subFolderType": "-1",
+  "fileNameType": "BOOK_NAME_BOOKID",
+  "removeParens": false,
+  "removeParensWhitelist": "",
+  "dailyNotesToggle": false,
+  "notesBlacklist": "",
+  "showEmptyChapterTitleToggle": false,
+  "convertTags": false,
+  "saveArticleToggle": true,
+  "saveReadingInfoToggle": true
+}

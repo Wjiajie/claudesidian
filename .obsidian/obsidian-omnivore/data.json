@@ -1,0 +1,32 @@
+{
+  "dateHighlightedFormat": "yyyy-MM-dd HH:mm:ss",
+  "dateSavedFormat": "yyyy-MM-dd HH:mm:ss",
+  "apiKey": "b6c5d8d4-b43f-4b9b-8e05-2ef7e7e525a0",
+  "filter": "ALL",
+  "syncAt": "2024-08-08T01:20:11",
+  "customQuery": "in:all",
+  "template": "---\nid: {{{id}}}\n---\n\n# {{{title}}}\n#Omnivore\n\n## collectedBy\n[[omnivore汇总]]\n\n[Read on Omnivore]({{{omnivoreUrl}}})\n[Read Original]({{{originalUrl}}})\n\n{{#highlights.length}}\n## Highlights\n\n{{#highlights}}\n> {{{text}}} [⤴️]({{{highlightUrl}}}) {{#labels}} #{{name}} {{/labels}}\n{{#note}}\n\n{{{note}}}\n{{/note}}\n\n{{/highlights}}\n{{/highlights.length}}\n\n## content\n{{{ content }}}\n\n",
+  "highlightOrder": "LOCATION",
+  "syncing": false,
+  "folder": "素材汇总/Omnivore/{{{date}}}",
+  "folderDateFormat": "yyyy-MM-dd",
+  "endpoint": "https://api-prod.omnivore.app/api/graphql",
+  "filename": "{{{title}}}",
+  "filenameDateFormat": "yyyy-MM-dd",
+  "attachmentFolder": "Omnivore/attachments",
+  "version": "1.10.4",
+  "isSingleFile": false,
+  "frequency": 0,
+  "intervalId": 0,
+  "frontMatterVariables": [],
+  "frontMatterTemplate": "",
+  "syncOnStart": false,
+  "enableHighlightColorRender": true,
+  "highlightManagerId": "omni",
+  "highlightColorMapping": {
+    "yellow": "#fff3a3",
+    "red": "#ff5582",
+    "blue": "#adccff",
+    "green": "#bbfabb"
+  }
+}

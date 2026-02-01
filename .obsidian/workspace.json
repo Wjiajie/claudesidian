@@ -1,0 +1,258 @@
+{
+  "main": {
+    "id": "e7a465ae9692fa98",
+    "type": "split",
+    "children": [
+      {
+        "id": "422bb8f70d6c1f93",
+        "type": "tabs",
+        "children": [
+          {
+            "id": "5816f49c03709161",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "03_Resources/微信读书/黑客与画家（10万册纪念版）-907771.md",
+                "mode": "preview",
+                "source": false,
+                "backlinks": true,
+                "backlinkOpts": {
+                  "collapseAll": false,
+                  "extraContext": false,
+                  "sortOrder": "alphabetical",
+                  "showSearch": false,
+                  "searchQuery": "",
+                  "backlinkCollapsed": false,
+                  "unlinkedCollapsed": true
+                }
+              },
+              "icon": "lucide-file",
+              "title": "黑客与画家（10万册纪念版）-907771"
+            }
+          }
+        ]
+      }
+    ],
+    "direction": "vertical"
+  },
+  "left": {
+    "id": "fdff421536a0a129",
+    "type": "split",
+    "children": [
+      {
+        "id": "3939b2cf308d99dd",
+        "type": "tabs",
+        "children": [
+          {
+            "id": "c2021669cdf70f6b",
+            "type": "leaf",
+            "state": {
+              "type": "file-explorer",
+              "state": {
+                "sortOrder": "alphabetical",
+                "autoReveal": false
+              },
+              "icon": "lucide-folder-closed",
+              "title": "文件列表"
+            }
+          },
+          {
+            "id": "3767544e8538846d",
+            "type": "leaf",
+            "state": {
+              "type": "search",
+              "state": {
+                "query": "tag:#大模型",
+                "matchingCase": false,
+                "explainSearch": false,
+                "collapseAll": false,
+                "extraContext": false,
+                "sortOrder": "alphabetical"
+              },
+              "icon": "lucide-search",
+              "title": "搜索"
+            }
+          },
+          {
+            "id": "be992a8a2253caf2",
+            "type": "leaf",
+            "state": {
+              "type": "bookmarks",
+              "state": {},
+              "icon": "lucide-bookmark",
+              "title": "书签"
+            }
+          }
+        ]
+      }
+    ],
+    "direction": "horizontal",
+    "width": 373.5
+  },
+  "right": {
+    "id": "3d6a04cc07637d05",
+    "type": "split",
+    "children": [
+      {
+        "id": "bf23460987e8f2bf",
+        "type": "tabs",
+        "children": [
+          {
+            "id": "6b9329b2362a0371",
+            "type": "leaf",
+            "state": {
+              "type": "backlink",
+              "state": {
+                "file": "索引入口.md",
+                "collapseAll": false,
+                "extraContext": false,
+                "sortOrder": "alphabetical",
+                "showSearch": false,
+                "searchQuery": "",
+                "backlinkCollapsed": false,
+                "unlinkedCollapsed": true
+              },
+              "icon": "links-coming-in",
+              "title": "索引入口 的反向链接列表"
+            }
+          },
+          {
+            "id": "2c1b200578648640",
+            "type": "leaf",
+            "state": {
+              "type": "outgoing-link",
+              "state": {
+                "file": "索引入口.md",
+                "linksCollapsed": false,
+                "unlinkedCollapsed": true
+              },
+              "icon": "links-going-out",
+              "title": "索引入口 的出链列表"
+            }
+          },
+          {
+            "id": "960692f0c00acb65",
+            "type": "leaf",
+            "state": {
+              "type": "tag",
+              "state": {
+                "sortOrder": "frequency",
+                "useHierarchy": true,
+                "showSearch": false,
+                "searchQuery": ""
+              },
+              "icon": "lucide-tags",
+              "title": "标签"
+            }
+          },
+          {
+            "id": "05def058f0fcea06",
+            "type": "leaf",
+            "state": {
+              "type": "outline",
+              "state": {
+                "file": "03_Resources/微信读书/黑客与画家（10万册纪念版）-907771.md",
+                "followCursor": false,
+                "showSearch": false,
+                "searchQuery": ""
+              },
+              "icon": "lucide-list",
+              "title": "黑客与画家（10万册纪念版）-907771 的大纲"
+            }
+          },
+          {
+            "id": "998725df209ddcac",
+            "type": "leaf",
+            "state": {
+              "type": "smart-connections-view",
+              "state": {},
+              "icon": "smart-connections",
+              "title": "Connections"
+            }
+          },
+          {
+            "id": "786cc81d8c9774b2",
+            "type": "leaf",
+            "state": {
+              "type": "smart-lookup-view",
+              "state": {},
+              "icon": "smart-lookup",
+              "title": "Lookup"
+            }
+          }
+        ],
+        "currentTab": 4
+      }
+    ],
+    "direction": "horizontal",
+    "width": 760.5
+  },
+  "left-ribbon": {
+    "hiddenItems": {
+      "switcher:打开快速切换": false,
+      "graph:查看关系图谱": false,
+      "canvas:新建白板": false,
+      "daily-notes:打开/创建今天的日记": false,
+      "command-palette:打开命令面板": false,
+      "zk-prefixer:创建时间戳笔记": false,
+      "bases:新建数据库": false,
+      "obsidian-excalidraw-plugin:新建绘图文件": false,
+      "obsidian-weread-plugin:同步微信读书笔记": false,
+      "remotely-save:Remotely Save": false,
+      "smart-connections:Smart Connections: Open connections view": false,
+      "smart-connections:Smart Lookup: Open lookup view": false,
+      "smart-connections:Smart Connections: Open random connection": false
+    }
+  },
+  "active": "5816f49c03709161",
+  "lastOpenFiles": [
+    "CLAUDE.md",
+    "CONTRIBUTING.md",
+    "README.md",
+    "CHANGELOG.md",
+    "未命名 1.base",
+    "未命名.base",
+    "03_Resources/微信读书/《妖刀記》成人精品小說-CB_D53GXlGZM2kC6wK6x73Jn7jL.md",
+    "01_Projects/mental-models/无意伤邻.md",
+    "01_Projects/mental-models/危险行业.md",
+    "01_Projects/mental-models/通往成功的捷径.md",
+    "01_Projects/mental-models/事半功倍.md",
+    "01_Projects/mental-models/各持己见.md",
+    "01_Projects/mental-models/别跟自然对着干.md",
+    "01_Projects/mental-models/保持简洁，笨蛋！.md",
+    "01_Projects/mental-models/换位思考.md",
+    "01_Projects/mental-models/摆脱坏习惯.md",
+    "01_Projects/mental-models/利用链式反应.md",
+    "01_Projects/mental-models/师法自然.md",
+    "01_Projects/mental-models/你能做好任意一件事，但不可能做好每件事.md",
+    "01_Projects/mental-models/寻找你的北极星.md",
+    "01_Projects/mental-models/好事过头成坏事.md",
+    "01_Projects/mental-models/越来越热.md",
+    "01_Projects/mental-models/许愿须谨慎.md",
+    "01_Projects/mental-models/别相信直觉.md",
+    "01_Projects/mental-models/进步总在葬礼后.md",
+    "03_Resources/B-202601161630-2026年度规划.md",
+    "03_Resources/C-202510241910-WebGL 无限白板 + 手绘风格 + 白板动画 完整学习与开发路线.md",
+    "02_Areas/独立开发/独立开发想法池.md",
+    "03_Resources/A-202408081241-独立开发工具.md.tmp.8768.1768534834397",
+    "02_Areas/独立开发",
+    "03_Resources/A-202408081235-知识管理.md.tmp.8768.1768534648725",
+    "未命名.canvas",
+    "_本地文件/绘图文件/Excalidraw/博客封面/ShotEasy.png",
+    "_本地文件/绘图文件/Excalidraw/博客封面/ShotEasy (1).png",
+    "_本地文件/绘图文件/Excalidraw/博客封面/ShotEasy (2).png",
+    "_本地文件/绘图文件/Excalidraw/博客封面/ShotEasy (3).png",
+    "_本地文件/绘图文件/Excalidraw/博客封面",
+    "_本地文件/绘图文件/Excalidraw/千脑智能/Pasted Image 20250914143928_299.png",
+    "_本地文件/绘图文件/Excalidraw/千脑智能",
+    "_本地文件/绘图文件/Excalidraw/穷查理宝典/Pasted Image 20250508225839_907.png",
+    "_本地文件/绘图文件/Excalidraw/凯文凯利/提升清晰度_PhotoGrid.png",
+    "screenshot-20250727-140121.png",
+    "_本地文件/绘图文件/Excalidraw/凯文凯利",
+    "_本地文件/绘图文件/Excalidraw/心流/s29595585.jpg",
+    "_本地文件/绘图文件/Excalidraw/原子习惯/Pasted Image 20250412154601_765.png",
+    "_本地文件/绘图文件/Excalidraw/心流",
+    "_本地文件/绘图文件/Excalidraw/100个思维模型推荐书单"
+  ]
+}
