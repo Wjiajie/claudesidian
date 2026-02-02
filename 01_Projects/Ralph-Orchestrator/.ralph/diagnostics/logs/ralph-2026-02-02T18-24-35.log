@@ -1,0 +1,27 @@
+2026-02-02T10:24:35.102002Z  WARN ralph: Loop locking not supported on this platform, running without lock
+2026-02-02T10:24:35.222152Z  WARN ralph::loop_runner: Failed to record loop start in history: I/O error: File locking not supported on this platform
+2026-02-02T10:24:35.222994Z  INFO ralph_core::event_loop: Memory injection check: enabled=true, inject=Auto, workspace_root="C:\\Users\\jiaji\\Documents\\claudesidian\\01_Projects\\Ralph-Orchestrator"
+2026-02-02T10:24:35.223046Z  INFO ralph_core::event_loop: Looking for memories at: "C:\\Users\\jiaji\\Documents\\claudesidian\\01_Projects\\Ralph-Orchestrator\\.ralph/agent/memories.md" (exists: false)
+2026-02-02T10:24:35.246742Z  INFO ralph_core::event_loop: Successfully loaded 0 memories from store
+2026-02-02T10:24:35.246809Z  INFO ralph_core::event_loop: Memory store is empty - no memories to inject
+2026-02-02T10:28:44.847323Z  INFO ralph_core::event_loop: Memory injection check: enabled=true, inject=Auto, workspace_root="C:\\Users\\jiaji\\Documents\\claudesidian\\01_Projects\\Ralph-Orchestrator"
+2026-02-02T10:28:44.847458Z  INFO ralph_core::event_loop: Looking for memories at: "C:\\Users\\jiaji\\Documents\\claudesidian\\01_Projects\\Ralph-Orchestrator\\.ralph/agent/memories.md" (exists: false)
+2026-02-02T10:28:44.847498Z  INFO ralph_core::event_loop: Successfully loaded 0 memories from store
+2026-02-02T10:28:44.847510Z  INFO ralph_core::event_loop: Memory store is empty - no memories to inject
+2026-02-02T10:28:44.847719Z  INFO ralph_core::event_loop: Injecting scratchpad (623 chars) into prompt
+2026-02-02T10:31:06.879967Z  INFO ralph_core::event_loop: Memory injection check: enabled=true, inject=Auto, workspace_root="C:\\Users\\jiaji\\Documents\\claudesidian\\01_Projects\\Ralph-Orchestrator"
+2026-02-02T10:31:06.880062Z  INFO ralph_core::event_loop: Looking for memories at: "C:\\Users\\jiaji\\Documents\\claudesidian\\01_Projects\\Ralph-Orchestrator\\.ralph/agent/memories.md" (exists: false)
+2026-02-02T10:31:06.880089Z  INFO ralph_core::event_loop: Successfully loaded 0 memories from store
+2026-02-02T10:31:06.880097Z  INFO ralph_core::event_loop: Memory store is empty - no memories to inject
+2026-02-02T10:31:06.892968Z  INFO ralph_core::event_loop: Injecting scratchpad (623 chars) into prompt
+2026-02-02T10:33:39.373743Z  WARN ralph_core::event_loop: review.done rejected: missing verification evidence
+2026-02-02T10:33:39.374203Z  INFO ralph_core::event_loop: Memory injection check: enabled=true, inject=Auto, workspace_root="C:\\Users\\jiaji\\Documents\\claudesidian\\01_Projects\\Ralph-Orchestrator"
+2026-02-02T10:33:39.374252Z  INFO ralph_core::event_loop: Looking for memories at: "C:\\Users\\jiaji\\Documents\\claudesidian\\01_Projects\\Ralph-Orchestrator\\.ralph/agent/memories.md" (exists: false)
+2026-02-02T10:33:39.374277Z  INFO ralph_core::event_loop: Successfully loaded 0 memories from store
+2026-02-02T10:33:39.374284Z  INFO ralph_core::event_loop: Memory store is empty - no memories to inject
+2026-02-02T10:33:39.374449Z  INFO ralph_core::event_loop: Injecting scratchpad (1345 chars) into prompt
+2026-02-02T10:37:33.968140Z  INFO ralph_core::event_loop: Memory injection check: enabled=true, inject=Auto, workspace_root="C:\\Users\\jiaji\\Documents\\claudesidian\\01_Projects\\Ralph-Orchestrator"
+2026-02-02T10:37:33.968233Z  INFO ralph_core::event_loop: Looking for memories at: "C:\\Users\\jiaji\\Documents\\claudesidian\\01_Projects\\Ralph-Orchestrator\\.ralph/agent/memories.md" (exists: false)
+2026-02-02T10:37:33.968257Z  INFO ralph_core::event_loop: Successfully loaded 0 memories from store
+2026-02-02T10:37:33.968265Z  INFO ralph_core::event_loop: Memory store is empty - no memories to inject
+2026-02-02T10:37:33.968394Z  INFO ralph_core::event_loop: Injecting scratchpad (1345 chars) into prompt
