@@ -1,5 +1,18 @@
-Organize the core concepts of the Ralph Orchestrator project and transform them into engaging, easy-to-understand (high school level and above) popular science articles. Each article should strive to be vivid and use metaphors extensively, while maintaining logical rigor. If related concepts are unclear, please perform web searches to supplement your knowledge. The final output should consist of multiple articles, each introducing a single core concept, progressing systematically from basic to advanced.
+# Task: Review Output Articles
 
-**Output Requirements:**
-1. Save all generated articles in the `output` directory.
-2. The series must contain at least 10 articles.
+**Objective**: Review the content of all articles in the `output/` directory to ensure they meet the following quality standards.
+
+**Detailed Requirements**:
+
+1.  **Sequential Order and Coherence**: 
+    *   Verify that chapters are ordered strictly from smallest to largest.
+    *   Ensure the narrative and logical flow between chapters is coherent and continuous.
+
+2.  **Vivid and Accessible Concepts**: 
+    *   Abstract concepts must be explained vividly. 
+    *   Ensure explanations are easy to understand for a general audience.
+
+3.  **Natural Tone (Remove "AI Flavor")**: 
+    *   The writing should avoid typical AI clichés.
+    *   **Strictly avoid** formulaic expressions such as "not... but..." (不是...而是) and "imagine..." (想象一下...).
+    *   Ensure the tone is natural and human-like.
