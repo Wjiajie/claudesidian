@@ -1,4 +1,5 @@
 ---
+parent: "[[omnivore汇总]]"
 id: d174ead1-286f-4999-821c-8e5589b11efd
 ---
 

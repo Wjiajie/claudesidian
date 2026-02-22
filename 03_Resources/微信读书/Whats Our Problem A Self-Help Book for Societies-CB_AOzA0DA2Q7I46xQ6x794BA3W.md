@@ -12,7 +12,7 @@ finishedDate: 2025-08-27
 isbn: 
 category: 
 lastReadDate: 2025-07-24
-parent: "[[微信读书索引]]"
+parent: "[[微信读书]]"
 
 ---
 >[!rnb|noicon] 

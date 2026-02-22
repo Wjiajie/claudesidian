@@ -4,31 +4,17 @@
     "type": "split",
     "children": [
       {
-        "id": "422bb8f70d6c1f93",
+        "id": "855226d8295ec509",
         "type": "tabs",
         "children": [
           {
-            "id": "5816f49c03709161",
+            "id": "611c48d7b3594155",
             "type": "leaf",
             "state": {
-              "type": "markdown",
-              "state": {
-                "file": "03_Resources/微信读书/黑客与画家（10万册纪念版）-907771.md",
-                "mode": "preview",
-                "source": false,
-                "backlinks": true,
-                "backlinkOpts": {
-                  "collapseAll": false,
-                  "extraContext": false,
-                  "sortOrder": "alphabetical",
-                  "showSearch": false,
-                  "searchQuery": "",
-                  "backlinkCollapsed": false,
-                  "unlinkedCollapsed": true
-                }
-              },
+              "type": "empty",
+              "state": {},
               "icon": "lucide-file",
-              "title": "黑客与画家（10万册纪念版）-907771"
+              "title": "新标签页"
             }
           }
         ]
@@ -88,7 +74,7 @@
       }
     ],
     "direction": "horizontal",
-    "width": 373.5
+    "width": 235.5
   },
   "right": {
     "id": "3d6a04cc07637d05",
@@ -162,97 +148,87 @@
             }
           },
           {
-            "id": "998725df209ddcac",
+            "id": "d81749f2a1211841",
             "type": "leaf",
             "state": {
-              "type": "smart-connections-view",
-              "state": {},
-              "icon": "smart-connections",
-              "title": "Connections"
-            }
-          },
-          {
-            "id": "786cc81d8c9774b2",
-            "type": "leaf",
-            "state": {
-              "type": "smart-lookup-view",
-              "state": {},
-              "icon": "smart-lookup",
-              "title": "Lookup"
+              "type": "all-properties",
+              "state": {
+                "sortOrder": "frequency",
+                "showSearch": false,
+                "searchQuery": ""
+              },
+              "icon": "lucide-archive",
+              "title": "添加笔记属性"
             }
           }
         ],
-        "currentTab": 4
+        "currentTab": 3
       }
     ],
     "direction": "horizontal",
-    "width": 760.5
+    "width": 760.5,
+    "collapsed": true
   },
   "left-ribbon": {
     "hiddenItems": {
       "switcher:打开快速切换": false,
       "graph:查看关系图谱": false,
-      "canvas:新建白板": false,
       "daily-notes:打开/创建今天的日记": false,
       "command-palette:打开命令面板": false,
       "zk-prefixer:创建时间戳笔记": false,
       "bases:新建数据库": false,
       "obsidian-excalidraw-plugin:新建绘图文件": false,
       "obsidian-weread-plugin:同步微信读书笔记": false,
-      "remotely-save:Remotely Save": false,
-      "smart-connections:Smart Connections: Open connections view": false,
-      "smart-connections:Smart Lookup: Open lookup view": false,
-      "smart-connections:Smart Connections: Open random connection": false
+      "remotely-save:Remotely Save": false
     }
   },
-  "active": "5816f49c03709161",
+  "active": "c2021669cdf70f6b",
   "lastOpenFiles": [
-    "CLAUDE.md",
-    "CONTRIBUTING.md",
-    "README.md",
-    "CHANGELOG.md",
-    "未命名 1.base",
-    "未命名.base",
-    "03_Resources/微信读书/《妖刀記》成人精品小說-CB_D53GXlGZM2kC6wK6x73Jn7jL.md",
-    "01_Projects/mental-models/无意伤邻.md",
-    "01_Projects/mental-models/危险行业.md",
-    "01_Projects/mental-models/通往成功的捷径.md",
-    "01_Projects/mental-models/事半功倍.md",
-    "01_Projects/mental-models/各持己见.md",
-    "01_Projects/mental-models/别跟自然对着干.md",
-    "01_Projects/mental-models/保持简洁，笨蛋！.md",
-    "01_Projects/mental-models/换位思考.md",
-    "01_Projects/mental-models/摆脱坏习惯.md",
-    "01_Projects/mental-models/利用链式反应.md",
-    "01_Projects/mental-models/师法自然.md",
-    "01_Projects/mental-models/你能做好任意一件事，但不可能做好每件事.md",
-    "01_Projects/mental-models/寻找你的北极星.md",
-    "01_Projects/mental-models/好事过头成坏事.md",
-    "01_Projects/mental-models/越来越热.md",
-    "01_Projects/mental-models/许愿须谨慎.md",
-    "01_Projects/mental-models/别相信直觉.md",
-    "01_Projects/mental-models/进步总在葬礼后.md",
-    "03_Resources/B-202601161630-2026年度规划.md",
-    "03_Resources/C-202510241910-WebGL 无限白板 + 手绘风格 + 白板动画 完整学习与开发路线.md",
-    "02_Areas/独立开发/独立开发想法池.md",
-    "03_Resources/A-202408081241-独立开发工具.md.tmp.8768.1768534834397",
-    "02_Areas/独立开发",
-    "03_Resources/A-202408081235-知识管理.md.tmp.8768.1768534648725",
     "未命名.canvas",
+    "CLAUDE.md.tmp.78508.1771645051401",
+    "索引入口.md",
+    "03_Resources/微信读书/sedJweNoZ",
+    "03_Resources/微信读书/sedZojQnc",
+    "03_Resources/微信读书/sedAVyuY3",
+    "03_Resources/微信读书/sedwk18ac",
+    "03_Resources/微信读书/sedUi3mBy",
+    "03_Resources/微信读书/sedl9AMOe",
+    "03_Resources/微信读书/sed7VWkEX",
+    "03_Resources/微信读书/sedAgv2YU",
+    "03_Resources/微信读书/sed6Zw4Wt",
+    "03_Resources/微信读书.md",
+    "04_Archive/nanobot-docs.md",
+    "CHANGELOG.md",
+    "06_Metadata/子主题索引文件/永久笔记/创业与金钱观.md",
+    "CONTRIBUTING.md",
+    "Ralph-Orchestrator.md",
+    "04_Archive/Ralph-Orchestrator.md",
+    "04_Archive/Ralph-Orchestrator/02-fresh-context.md",
+    "04_Archive/nanobot-docs/2026-02-02-nanobot-05-agent-core.md",
+    "04_Archive/nanobot-docs/2026-02-05-nanobot-08-channel-adapters.md",
+    "04_Archive/nanobot-docs/2026-02-07-nanobot-10-llm-provider.md",
+    "04_Archive/Ralph-Orchestrator/10-skills.md",
+    "04_Archive/Ralph-Orchestrator/11-tasks-two-systems.md",
+    "04_Archive/Ralph-Orchestrator/09-the-scratchpad.md",
+    "04_Archive/Ralph-Orchestrator/08-memory-and-state.md",
+    "04_Archive/Ralph-Orchestrator/07-the-loop.md",
+    "04_Archive/Ralph-Orchestrator/06-events-routing.md",
+    "04_Archive/Ralph-Orchestrator/05-hats-system.md",
+    "04_Archive/Ralph-Orchestrator/04-backpressure.md",
+    "04_Archive/Ralph-Orchestrator/03-six-tenets.md",
+    "04_Archive/Ralph-Orchestrator/01-ralph-wiggum-technique.md",
+    "04_Archive/nanobot-docs/2026-02-08-nanobot-11-future-outlook.md",
+    "04_Archive/nanobot-docs/2026-02-06-nanobot-09-session-memory.md",
+    "04_Archive/nanobot-docs/2026-02-03-nanobot-06-tools-system.md",
+    "04_Archive/Ralph-Orchestrator/docs/demos/ralph-task.gif",
+    "04_Archive/Ralph-Orchestrator/docs/demos/ralph-plan.gif",
     "_本地文件/绘图文件/Excalidraw/博客封面/ShotEasy.png",
     "_本地文件/绘图文件/Excalidraw/博客封面/ShotEasy (1).png",
     "_本地文件/绘图文件/Excalidraw/博客封面/ShotEasy (2).png",
     "_本地文件/绘图文件/Excalidraw/博客封面/ShotEasy (3).png",
-    "_本地文件/绘图文件/Excalidraw/博客封面",
     "_本地文件/绘图文件/Excalidraw/千脑智能/Pasted Image 20250914143928_299.png",
-    "_本地文件/绘图文件/Excalidraw/千脑智能",
     "_本地文件/绘图文件/Excalidraw/穷查理宝典/Pasted Image 20250508225839_907.png",
     "_本地文件/绘图文件/Excalidraw/凯文凯利/提升清晰度_PhotoGrid.png",
-    "screenshot-20250727-140121.png",
-    "_本地文件/绘图文件/Excalidraw/凯文凯利",
-    "_本地文件/绘图文件/Excalidraw/心流/s29595585.jpg",
-    "_本地文件/绘图文件/Excalidraw/原子习惯/Pasted Image 20250412154601_765.png",
-    "_本地文件/绘图文件/Excalidraw/心流",
-    "_本地文件/绘图文件/Excalidraw/100个思维模型推荐书单"
+    "screenshot-20250727-140121.png"
   ]
 }

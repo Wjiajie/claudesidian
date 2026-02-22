@@ -11,7 +11,7 @@ readingDate: 2025-03-06
 isbn: 
 category: 
 lastReadDate: 2025-05-07
-parent: "[[微信读书索引]]"
+parent: "[[微信读书]]"
 
 ---
 >[!rnb|noicon] 

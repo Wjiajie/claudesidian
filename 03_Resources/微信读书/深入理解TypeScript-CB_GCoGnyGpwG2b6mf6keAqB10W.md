@@ -13,7 +13,7 @@ readingDate: 2024-03-02
 isbn: 
 category: 
 lastReadDate: 2024-03-25
-parent: "[[微信读书索引]]"
+parent: "[[微信读书]]"
 
 ---
 >[!rnb|noicon] 

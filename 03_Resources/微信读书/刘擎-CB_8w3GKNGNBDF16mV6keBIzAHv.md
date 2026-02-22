@@ -11,7 +11,7 @@ readingDate: 1970-01-01
 isbn:
 category:
 lastReadDate: 2024-02-23
-parent: "[[微信读书索引]]"
+parent: "[[微信读书]]"
 
 ---
 >[!rnb|noicon] 

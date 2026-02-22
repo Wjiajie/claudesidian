@@ -14,7 +14,7 @@ finishedDate: 2023-12-30
 isbn: 
 category: 
 lastReadDate: 2024-04-14
-parent: "[[微信读书索引]]"
+parent: "[[微信读书]]"
 
 ---
 >[!rnb|noicon] 

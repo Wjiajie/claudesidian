@@ -11,7 +11,7 @@ readingDate: 2023-12-30
 isbn: 
 category: 
 lastReadDate: 2025-09-07
-parent: "[[微信读书索引]]"
+parent: "[[微信读书]]"
 finishedDate: 2025-09-07
 
 ---

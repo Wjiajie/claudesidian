@@ -1,4 +1,26 @@
 {
+  "permissions": {
+    "allow": [
+      "Bash",
+      "Read",
+      "Write",
+      "Edit",
+      "Glob",
+      "Grep",
+      "WebSearch",
+      "WebFetch",
+      "mcp__fetch__fetch",
+      "mcp__jina__search_web",
+      "mcp__jina__read_url",
+      "mcp__jina__search_images",
+      "mcp__jina__search_arxiv",
+      "mcp__jina__search_ssrn",
+      "mcp__jina__search_bibtex",
+      "mcp__github__*",
+      "mcp__memory__*",
+      "mcp__excalidraw__*"
+    ]
+  },
   "hooks": {
     "SessionStart": [
       {
