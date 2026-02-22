@@ -37,3 +37,6 @@ pnpm-lock.yaml
 
 # Ignore Smart Environment folder
 .smart-env
+
+# Memory search data
+.memsearch/
