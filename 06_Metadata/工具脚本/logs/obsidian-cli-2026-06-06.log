@@ -1,0 +1,3 @@
+﻿[2026-06-06 18:58:17] [OK] obsidian read file=06_Metadata/README.md :: stdout-bytes=2967
+[2026-06-06 18:58:18] [OK] obsidian vault :: stdout-bytes=221
+[2026-06-06 18:58:19] [DRYRUN] obsidian create name=test-2026-06-06.md content=# test :: would-execute

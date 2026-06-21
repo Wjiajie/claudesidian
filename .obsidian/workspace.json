@@ -4,20 +4,47 @@
     "type": "split",
     "children": [
       {
-        "id": "855226d8295ec509",
+        "id": "7f4995ecf02228e1",
         "type": "tabs",
         "children": [
           {
-            "id": "611c48d7b3594155",
+            "id": "abf781bbeb4cb5c8",
+            "type": "leaf",
+            "pinned": true,
+            "state": {
+              "type": "thino_view",
+              "state": {},
+              "pinned": true,
+              "icon": "Memos",
+              "title": "Thino"
+            }
+          },
+          {
+            "id": "5c0723df5bf5dadf",
             "type": "leaf",
             "state": {
-              "type": "empty",
-              "state": {},
+              "type": "markdown",
+              "state": {
+                "file": "00_Inbox/2026-06-20.md",
+                "mode": "source",
+                "source": false,
+                "backlinks": true,
+                "backlinkOpts": {
+                  "collapseAll": false,
+                  "extraContext": false,
+                  "sortOrder": "alphabetical",
+                  "showSearch": false,
+                  "searchQuery": "",
+                  "backlinkCollapsed": false,
+                  "unlinkedCollapsed": true
+                }
+              },
               "icon": "lucide-file",
-              "title": "新标签页"
+              "title": "2026-06-20"
             }
           }
-        ]
+        ],
+        "currentTab": 1
       }
     ],
     "direction": "vertical"
@@ -49,7 +76,7 @@
             "state": {
               "type": "search",
               "state": {
-                "query": "tag:#大模型",
+                "query": "gstack",
                 "matchingCase": false,
                 "explainSearch": false,
                 "collapseAll": false,
@@ -74,7 +101,7 @@
       }
     ],
     "direction": "horizontal",
-    "width": 235.5
+    "width": 200
   },
   "right": {
     "id": "3d6a04cc07637d05",
@@ -138,13 +165,13 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "03_Resources/微信读书/黑客与画家（10万册纪念版）-907771.md",
+                "file": "03_Resources/hot-info-crawler/hot-info-2026-06-15.md",
                 "followCursor": false,
                 "showSearch": false,
                 "searchQuery": ""
               },
               "icon": "lucide-list",
-              "title": "黑客与画家（10万册纪念版）-907771 的大纲"
+              "title": "hot-info-2026-06-15 的大纲"
             }
           },
           {
@@ -160,66 +187,80 @@
               "icon": "lucide-archive",
               "title": "添加笔记属性"
             }
+          },
+          {
+            "id": "a1c31d9255f51e19",
+            "type": "leaf",
+            "state": {
+              "type": "copilot-chat-view",
+              "state": {},
+              "icon": "message-square",
+              "title": "Copilot"
+            }
           }
         ],
         "currentTab": 3
       }
     ],
     "direction": "horizontal",
-    "width": 760.5,
+    "width": 200,
     "collapsed": true
   },
   "left-ribbon": {
     "hiddenItems": {
+      "obsidian-weread-plugin:同步微信读书笔记": false,
+      "obsidian-excalidraw-plugin:新建绘图文件": false,
       "switcher:打开快速切换": false,
       "graph:查看关系图谱": false,
       "daily-notes:打开/创建今天的日记": false,
       "command-palette:打开命令面板": false,
       "zk-prefixer:创建时间戳笔记": false,
       "bases:新建数据库": false,
-      "obsidian-excalidraw-plugin:新建绘图文件": false,
-      "obsidian-weread-plugin:同步微信读书笔记": false,
-      "remotely-save:Remotely Save": false
+      "remotely-save:Remotely Save": false,
+      "copilot:Open Copilot Chat": false,
+      "obsidian-memos:Thino": false,
+      "obsidian-memos:Thino Super": false
     }
   },
-  "active": "c2021669cdf70f6b",
+  "active": "5c0723df5bf5dadf",
   "lastOpenFiles": [
-    "未命名.canvas",
-    "CLAUDE.md.tmp.78508.1771645051401",
+    "00_Inbox/2026-06-20.md",
     "索引入口.md",
-    "03_Resources/微信读书/sedJweNoZ",
-    "03_Resources/微信读书/sedZojQnc",
-    "03_Resources/微信读书/sedAVyuY3",
-    "03_Resources/微信读书/sedwk18ac",
-    "03_Resources/微信读书/sedUi3mBy",
-    "03_Resources/微信读书/sedl9AMOe",
-    "03_Resources/微信读书/sed7VWkEX",
-    "03_Resources/微信读书/sedAgv2YU",
-    "03_Resources/微信读书/sed6Zw4Wt",
-    "03_Resources/微信读书.md",
-    "04_Archive/nanobot-docs.md",
-    "CHANGELOG.md",
-    "06_Metadata/子主题索引文件/永久笔记/创业与金钱观.md",
-    "CONTRIBUTING.md",
-    "Ralph-Orchestrator.md",
-    "04_Archive/Ralph-Orchestrator.md",
-    "04_Archive/Ralph-Orchestrator/02-fresh-context.md",
-    "04_Archive/nanobot-docs/2026-02-02-nanobot-05-agent-core.md",
-    "04_Archive/nanobot-docs/2026-02-05-nanobot-08-channel-adapters.md",
-    "04_Archive/nanobot-docs/2026-02-07-nanobot-10-llm-provider.md",
-    "04_Archive/Ralph-Orchestrator/10-skills.md",
-    "04_Archive/Ralph-Orchestrator/11-tasks-two-systems.md",
-    "04_Archive/Ralph-Orchestrator/09-the-scratchpad.md",
-    "04_Archive/Ralph-Orchestrator/08-memory-and-state.md",
-    "04_Archive/Ralph-Orchestrator/07-the-loop.md",
-    "04_Archive/Ralph-Orchestrator/06-events-routing.md",
-    "04_Archive/Ralph-Orchestrator/05-hats-system.md",
-    "04_Archive/Ralph-Orchestrator/04-backpressure.md",
-    "04_Archive/Ralph-Orchestrator/03-six-tenets.md",
-    "04_Archive/Ralph-Orchestrator/01-ralph-wiggum-technique.md",
-    "04_Archive/nanobot-docs/2026-02-08-nanobot-11-future-outlook.md",
-    "04_Archive/nanobot-docs/2026-02-06-nanobot-09-session-memory.md",
-    "04_Archive/nanobot-docs/2026-02-03-nanobot-06-tools-system.md",
+    "CLAUDE.md",
+    "03_Resources/hot-info-crawler/hot-info-2026-06-15.md",
+    "copilot/copilot-conversations/Repo_Structure_and_Wiki_Update@20260616_001217.md",
+    "copilot/copilot-conversations",
+    "03_Resources/hot-info-crawler/_appended.md",
+    "copilot/copilot-custom-prompts/Clip Web Page.md",
+    "copilot/copilot-custom-prompts/Clip YouTube Transcript.md",
+    "copilot/copilot-custom-prompts/Rewrite as tweet thread.md",
+    "copilot/copilot-custom-prompts/Rewrite as tweet.md",
+    "copilot/copilot-custom-prompts/Remove URLs.md",
+    "copilot/copilot-custom-prompts/Generate glossary.md",
+    "copilot/copilot-custom-prompts/Generate table of contents.md",
+    "copilot/copilot-custom-prompts/Make longer.md",
+    "copilot/copilot-custom-prompts/Make shorter.md",
+    "copilot/copilot-custom-prompts/Emojify.md",
+    "copilot/copilot-custom-prompts/Explain like I am 5.md",
+    "copilot/copilot-custom-prompts/Simplify.md",
+    "copilot/copilot-custom-prompts/Summarize.md",
+    "copilot/copilot-custom-prompts/Translate to Chinese.md",
+    "copilot/copilot-custom-prompts/Fix grammar and spelling.md",
+    "copilot/copilot-custom-prompts",
+    "copilot",
+    "03_Resources/hot-info-crawler/feed-x.json",
+    "03_Resources/hot-info-crawler/_final.json",
+    "03_Resources/hot-info-crawler/_embodied.json",
+    "03_Resources/hot-info-crawler/_feed-podcasts.json",
+    "03_Resources/hot-info-crawler/_feed-x.json",
+    "03_Resources/hot-info-crawler/_aihot_24h.json",
+    "03_Resources/Clippings/雷·达里奥：为什么AI泡沫迟早会破？.md",
+    "00_Inbox/2025-12-29.md",
+    "06_Metadata/工具脚本/write_final.ps1",
+    "06_Metadata/工具脚本/README.md",
+    "06_Metadata/模板文件/agent-operation-log.md",
+    "06_Metadata/A-202606061851-obsidian-cli.md",
+    "未命名.canvas",
     "04_Archive/Ralph-Orchestrator/docs/demos/ralph-task.gif",
     "04_Archive/Ralph-Orchestrator/docs/demos/ralph-plan.gif",
     "_本地文件/绘图文件/Excalidraw/博客封面/ShotEasy.png",

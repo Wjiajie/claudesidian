@@ -40,3 +40,6 @@ pnpm-lock.yaml
 
 # Memory search data
 .memsearch/
+
+# Obsidian plugin bundles with embedded OAuth credentials
+.obsidian/plugins/remotely-save/main.js

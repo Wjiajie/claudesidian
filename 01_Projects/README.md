@@ -14,7 +14,7 @@ Projects are **time-bound efforts** with:
 
 ### Good Projects
 - "Q1 2024 Marketing Strategy" ✓
-- "Website Redesign" ✓
+- "Website Redesign" ✓“
 - "Book Writing - AI & Creativity" ✓
 - "Conference Talk - BRXND NYC" ✓
 
